@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CarouselManager : MonoBehaviour
 {
@@ -34,12 +35,24 @@ public class CarouselManager : MonoBehaviour
     {
         foreach (ModeData mode in gameModes)
         {
+            Debug.Log("INICIO: " + mode.modeName);
+
             CarouselCard newCard = Instantiate(cardPrefab, cardsContainer);
+
+            Debug.Log("INSTANTIADA: " + mode.modeName);
 
             newCard.SetData(mode);
 
+            Debug.Log("DATOS ASIGNADOS: " + mode.modeName);
+
+            newCard.SetButtonAction(() => OpenMode(mode.sceneName));
+
+            Debug.Log("BOTON ASIGNADO: " + mode.modeName);
+
             spawnedCards.Add(newCard);
         }
+
+        Debug.Log("TOTAL: " + spawnedCards.Count);
     }
 
     private void UpdateCarousel(bool animate = true)
@@ -170,5 +183,10 @@ public class CarouselManager : MonoBehaviour
 
         focusedIndex--;
         UpdateCarousel();
+    }
+
+    private void OpenMode(string sceneName)
+    {
+        SceneManager.LoadScene(sceneName);
     }
 }

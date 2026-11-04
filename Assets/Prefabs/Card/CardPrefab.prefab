@@ -641,3 +641,4 @@ MonoBehaviour:
   backgroundImage: {fileID: 7685280845811552348}
   titleText: {fileID: 3226908616861084263}
   descriptionText: {fileID: 6743103877268694722}
+  cardButton: {fileID: 3811782997404627199}
