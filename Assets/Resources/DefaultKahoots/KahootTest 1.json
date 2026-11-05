@@ -1,6 +1,8 @@
 
 {
   "titulo": "Cultura General",
+  "descripcion": "Pon a prueba tus conocimientos sobre cultura general, matemáticas, geografía y ciencia.",
+  "imagen": "CulturaGeneral",
   "preguntas": [
     {
       "pregunta": "¿Cuál es la capital de España?",
