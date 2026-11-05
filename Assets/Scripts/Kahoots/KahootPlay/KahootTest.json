@@ -1,0 +1,58 @@
+
+{
+  "titulo": "Cultura General",
+  "preguntas": [
+    {
+      "pregunta": "¿Cuál es la capital de España?",
+      "imagen": "",
+      "duracion": 10,
+      "respuestas": [
+        { "texto": "Madrid", "correcta": true },
+        { "texto": "Barcelona", "correcta": false },
+        { "texto": "Sevilla", "correcta": false },
+        { "texto": "Valencia", "correcta": false }
+      ]
+    },
+    {
+      "pregunta": "¿Cuánto es 8 x 7?",
+      "imagen": "",
+      "duracion": 8,
+      "respuestas": [
+        { "texto": "54", "correcta": false },
+        { "texto": "56", "correcta": true },
+        { "texto": "64", "correcta": false }
+      ]
+    },
+    {
+      "pregunta": "¿Qué planeta es conocido como el planeta rojo?",
+      "imagen": "",
+      "duracion": 10,
+      "respuestas": [
+        { "texto": "Venus", "correcta": false },
+        { "texto": "Júpiter", "correcta": false },
+        { "texto": "Marte", "correcta": true },
+        { "texto": "Saturno", "correcta": false }
+      ]
+    },
+    {
+      "pregunta": "¿Cuál de estos animales es un mamífero?",
+      "imagen": "",
+      "duracion": 8,
+      "respuestas": [
+        { "texto": "Tiburón", "correcta": false },
+        { "texto": "Delfín", "correcta": true }
+      ]
+    },
+    {
+      "pregunta": "¿En qué continente está Japón?",
+      "imagen": "",
+      "duracion": 10,
+      "respuestas": [
+        { "texto": "Europa", "correcta": false },
+        { "texto": "Asia", "correcta": true },
+        { "texto": "África", "correcta": false },
+        { "texto": "Oceanía", "correcta": false }
+      ]
+    }
+  ]
+}
