@@ -9,6 +9,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] private string selectorScene = "KahootSelector";
     [SerializeField] private string optionsScene = "Options";
     [SerializeField] private string aboutScene = "About";
+    [SerializeField] private string validationScene = "KahootValidation";
+    [SerializeField] private string playScene = "KahootPlay";
+    [SerializeField] private string editorScene = "KahootEditor";
 
     private void Awake()
     {
@@ -55,5 +58,18 @@ public class UIManager : MonoBehaviour
         Application.Quit();
     }
 
+    public void GoToKahootValidation()
+    {
+        LoadScene(validationScene);
+    }
 
+    public void GoToKahootPlay()
+    {
+        LoadScene(playScene);
+    }
+
+    public void GoToKahootEditor()
+    {
+        LoadScene(editorScene);
+    }
 }

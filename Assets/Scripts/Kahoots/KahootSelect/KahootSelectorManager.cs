@@ -2,6 +2,7 @@
 using System.IO;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class KahootSelectorManager : MonoBehaviour
 {
@@ -143,8 +144,9 @@ public class KahootSelectorManager : MonoBehaviour
 
     private void OnKahootSelected(string jsonPath)
     {
-        Debug.Log("Kahoot seleccionado: " + jsonPath);
+        KahootSession.SelectedKahootPath = jsonPath;
+        KahootSession.CurrentKahoot = null;
 
-        // Más adelante pasaremos a la escena de validación.
+        UIManager.Instance.GoToKahootValidation();
     }
 }

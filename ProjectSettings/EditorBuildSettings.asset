@@ -17,6 +17,21 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Options.unity
     guid: 5d5ea4b55b394254da1a67ed5a3f7817
+  - enabled: 1
+    path: Assets/Scenes/KahootPlay.unity
+    guid: a539453b67a8cb64cbc5536199f7d1bb
+  - enabled: 1
+    path: Assets/Scenes/KahootSelector.unity
+    guid: 9a52915be3f5d354bb9ba6431d910cae
+  - enabled: 1
+    path: Assets/Scenes/KahootValidation.unity
+    guid: ce3a5a3a1f23bd749b10798fc7928295
+  - enabled: 1
+    path: Assets/Scenes/KahootEditor.unity
+    guid: 3ed22ec251dcacd41adac00483d0ffe0
+  - enabled: 1
+    path: Assets/Scenes/KahootEditorMenu.unity
+    guid: fd7d723e2101331478b71063361b7d80
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

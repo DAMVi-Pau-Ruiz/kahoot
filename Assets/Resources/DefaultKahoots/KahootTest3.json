@@ -1,0 +1,117 @@
+{
+  "titulo": "Cultura Gamer",
+  "descripcion": "Demuestra cuánto sabes sobre videojuegos, personajes y consolas.",
+  "imagen": "CulturaGamer",
+  "preguntas": [
+    {
+      "pregunta": "¿Qué personaje pertenece al universo de Nintendo?",
+      "imagen": "",
+      "duracion": 20,
+      "respuestas": [
+        { "texto": "Kirby", "correcta": true },
+        { "texto": "Kratos", "correcta": false },
+        { "texto": "Link", "correcta": true },
+        { "texto": "Master Chief", "correcta": false }
+      ]
+    },
+    {
+      "pregunta": "¿En qué saga aparece la región de Kanto?",
+      "imagen": "",
+      "duracion": 20,
+      "respuestas": [
+        { "texto": "Pokémon", "correcta": true },
+        { "texto": "Final Fantasy", "correcta": false },
+        { "texto": "Persona", "correcta": false },
+        { "texto": "The Legend of Zelda", "correcta": false }
+      ]
+    },
+    {
+      "pregunta": "¿Qué estudios desarrollaron Minecraft originalmente?",
+      "imagen": "",
+      "duracion": 20,
+      "respuestas": [
+        { "texto": "Mojang", "correcta": true },
+        { "texto": "Rockstar Games", "correcta": false },
+        { "texto": "Naughty Dog", "correcta": false },
+        { "texto": "Bungie", "correcta": false }
+      ]
+    },
+    {
+      "pregunta": "¿Cuáles de estos videojuegos son de mundo abierto?",
+      "imagen": "",
+      "duracion": 20,
+      "respuestas": [
+        { "texto": "The Legend of Zelda: Breath of the Wild", "correcta": true },
+        { "texto": "Grand Theft Auto V", "correcta": true },
+        { "texto": "Tetris", "correcta": false },
+        { "texto": "Red Dead Redemption 2", "correcta": true }
+      ]
+    },
+    {
+      "pregunta": "¿Qué personaje utiliza una espada llamada Buster Sword?",
+      "imagen": "",
+      "duracion": 20,
+      "respuestas": [
+        { "texto": "Cloud Strife", "correcta": true },
+        { "texto": "Sonic", "correcta": false },
+        { "texto": "Leon Kennedy", "correcta": false },
+        { "texto": "Dante", "correcta": false }
+      ]
+    },
+    {
+      "pregunta": "¿Qué consolas pertenecen a Sony?",
+      "imagen": "",
+      "duracion": 20,
+      "respuestas": [
+        { "texto": "PlayStation 2", "correcta": true },
+        { "texto": "Xbox 360", "correcta": false },
+        { "texto": "PlayStation 5", "correcta": true },
+        { "texto": "Nintendo Switch", "correcta": false }
+      ]
+    },
+    {
+      "pregunta": "¿En qué videojuego aparece el personaje Geralt de Rivia?",
+      "imagen": "",
+      "duracion": 20,
+      "respuestas": [
+        { "texto": "The Witcher 3", "correcta": true },
+        { "texto": "Dragon Age: Inquisition", "correcta": false },
+        { "texto": "Skyrim", "correcta": false },
+        { "texto": "Dark Souls", "correcta": false }
+      ]
+    },
+    {
+      "pregunta": "¿Qué personajes son protagonistas de juegos de plataformas?",
+      "imagen": "",
+      "duracion": 20,
+      "respuestas": [
+        { "texto": "Mario", "correcta": true },
+        { "texto": "Crash Bandicoot", "correcta": true },
+        { "texto": "Agent 47", "correcta": false },
+        { "texto": "Sackboy", "correcta": true }
+      ]
+    },
+    {
+      "pregunta": "¿Qué empresa creó la saga The Legend of Zelda?",
+      "imagen": "",
+      "duracion": 20,
+      "respuestas": [
+        { "texto": "Nintendo", "correcta": true },
+        { "texto": "Capcom", "correcta": false },
+        { "texto": "Ubisoft", "correcta": false },
+        { "texto": "Electronic Arts", "correcta": false }
+      ]
+    },
+    {
+      "pregunta": "¿Qué juegos pertenecen al género Battle Royale?",
+      "imagen": "",
+      "duracion": 20,
+      "respuestas": [
+        { "texto": "Fortnite", "correcta": true },
+        { "texto": "PUBG", "correcta": true },
+        { "texto": "The Sims 4", "correcta": false },
+        { "texto": "Apex Legends", "correcta": true }
+      ]
+    }
+  ]
+}

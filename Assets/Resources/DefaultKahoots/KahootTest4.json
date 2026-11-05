@@ -1,0 +1,117 @@
+{
+  "titulo": "Cine y Series",
+  "descripcion": "¿Eres un experto en películas y series? ¡Demuéstralo!",
+  "imagen": "CineYSeries",
+  "preguntas": [
+    {
+      "pregunta": "¿En qué película aparece el personaje Jack Sparrow?",
+      "imagen": "",
+      "duracion": 20,
+      "respuestas": [
+        { "texto": "Piratas del Caribe", "correcta": true },
+        { "texto": "Hook", "correcta": false },
+        { "texto": "Peter Pan", "correcta": false },
+        { "texto": "La isla del tesoro", "correcta": false }
+      ]
+    },
+    {
+      "pregunta": "¿Qué personajes pertenecen al universo de Marvel?",
+      "imagen": "",
+      "duracion": 20,
+      "respuestas": [
+        { "texto": "Iron Man", "correcta": true },
+        { "texto": "Batman", "correcta": false },
+        { "texto": "Thor", "correcta": true },
+        { "texto": "Spider-Man", "correcta": true }
+      ]
+    },
+    {
+      "pregunta": "¿Cómo se llama la escuela de magia de Harry Potter?",
+      "imagen": "",
+      "duracion": 20,
+      "respuestas": [
+        { "texto": "Hogwarts", "correcta": true },
+        { "texto": "Narnia", "correcta": false },
+        { "texto": "Camelot", "correcta": false },
+        { "texto": "Nevermore", "correcta": false }
+      ]
+    },
+    {
+      "pregunta": "¿Qué películas pertenecen a Pixar?",
+      "imagen": "",
+      "duracion": 20,
+      "respuestas": [
+        { "texto": "Toy Story", "correcta": true },
+        { "texto": "Shrek", "correcta": false },
+        { "texto": "Buscando a Nemo", "correcta": true },
+        { "texto": "Monstruos, S.A.", "correcta": true }
+      ]
+    },
+    {
+      "pregunta": "¿En qué serie aparece el pueblo de Hawkins?",
+      "imagen": "",
+      "duracion": 20,
+      "respuestas": [
+        { "texto": "Stranger Things", "correcta": true },
+        { "texto": "Dark", "correcta": false },
+        { "texto": "The Walking Dead", "correcta": false },
+        { "texto": "Wednesday", "correcta": false }
+      ]
+    },
+    {
+      "pregunta": "¿Quién dirigió la película Titanic de 1997?",
+      "imagen": "",
+      "duracion": 20,
+      "respuestas": [
+        { "texto": "James Cameron", "correcta": true },
+        { "texto": "Steven Spielberg", "correcta": false },
+        { "texto": "Christopher Nolan", "correcta": false },
+        { "texto": "Peter Jackson", "correcta": false }
+      ]
+    },
+    {
+      "pregunta": "¿Qué personajes aparecen en El Señor de los Anillos?",
+      "imagen": "",
+      "duracion": 20,
+      "respuestas": [
+        { "texto": "Frodo", "correcta": true },
+        { "texto": "Gandalf", "correcta": true },
+        { "texto": "Dumbledore", "correcta": false },
+        { "texto": "Legolas", "correcta": true }
+      ]
+    },
+    {
+      "pregunta": "¿Qué películas pertenecen a la saga Star Wars?",
+      "imagen": "",
+      "duracion": 20,
+      "respuestas": [
+        { "texto": "El Imperio contraataca", "correcta": true },
+        { "texto": "La amenaza fantasma", "correcta": true },
+        { "texto": "El retorno del rey", "correcta": false },
+        { "texto": "Una nueva esperanza", "correcta": true }
+      ]
+    },
+    {
+      "pregunta": "¿Cómo se llama el protagonista de Breaking Bad?",
+      "imagen": "",
+      "duracion": 20,
+      "respuestas": [
+        { "texto": "Walter White", "correcta": true },
+        { "texto": "Jesse Pinkman", "correcta": false },
+        { "texto": "Saul Goodman", "correcta": false },
+        { "texto": "Hank Schrader", "correcta": false }
+      ]
+    },
+    {
+      "pregunta": "¿Qué películas fueron producidas por DreamWorks Animation?",
+      "imagen": "",
+      "duracion": 20,
+      "respuestas": [
+        { "texto": "Shrek", "correcta": true },
+        { "texto": "Kung Fu Panda", "correcta": true },
+        { "texto": "Frozen", "correcta": false },
+        { "texto": "Cómo entrenar a tu dragón", "correcta": true }
+      ]
+    }
+  ]
+}

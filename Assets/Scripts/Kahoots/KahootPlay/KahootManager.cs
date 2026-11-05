@@ -41,8 +41,14 @@ public class KahootManager : MonoBehaviour
     {
         continueButton.gameObject.SetActive(false);
 
-        if (testKahootJson != null)
+        // Comprobar si hay un Kahoot seleccionado
+        if (KahootSession.CurrentKahoot != null)
         {
+            StartGame(KahootSession.CurrentKahoot);
+        }
+        else if (testKahootJson != null)
+        {
+            // Cargar Kahoot de prueba
             KahootData kahoot =
                 JsonUtility.FromJson<KahootData>(testKahootJson.text);
 
@@ -50,7 +56,7 @@ public class KahootManager : MonoBehaviour
         }
         else
         {
-            Debug.LogError("No se ha asignado el JSON de prueba.");
+            Debug.LogError("No hay ningún Kahoot seleccionado ni uno de prueba.");
         }
     }
 
@@ -104,6 +110,7 @@ public class KahootManager : MonoBehaviour
 
         currentState = KahootGameState.FINISHED;
         remainingTimeText.text = "FIN";
+        //Se ha acabado el juego
     }
 
     private IEnumerator ShowQuestion()

@@ -26,4 +26,14 @@ public class UIButtonActions : MonoBehaviour
     {
         UIManager.Instance.QuitGame();
     }
+
+    public void OpenKahootValidation()
+    {
+        UIManager.Instance.GoToKahootValidation();
+    }
+
+    public void OpenKahootPlay()
+    {
+        UIManager.Instance.GoToKahootPlay();
+    }
 }

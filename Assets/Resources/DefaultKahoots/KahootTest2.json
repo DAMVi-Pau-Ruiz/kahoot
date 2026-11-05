@@ -1,0 +1,117 @@
+{
+  "titulo": "Ciencia y Naturaleza",
+  "descripcion": "Pon a prueba tus conocimientos sobre ciencia, animales y nuestro planeta.",
+  "imagen": "CienciaNaturaleza",
+  "preguntas": [
+    {
+      "pregunta": "¿Cuáles de estos animales son mamíferos?",
+      "imagen": "",
+      "duracion": 20,
+      "respuestas": [
+        { "texto": "Delfín", "correcta": true },
+        { "texto": "Tiburón", "correcta": false },
+        { "texto": "Murciélago", "correcta": true },
+        { "texto": "Tortuga", "correcta": false }
+      ]
+    },
+    {
+      "pregunta": "¿Qué planetas forman parte del sistema solar?",
+      "imagen": "",
+      "duracion": 20,
+      "respuestas": [
+        { "texto": "Marte", "correcta": true },
+        { "texto": "Plutón", "correcta": false },
+        { "texto": "Venus", "correcta": true },
+        { "texto": "Luna", "correcta": false }
+      ]
+    },
+    {
+      "pregunta": "¿Cuáles son estados de la materia?",
+      "imagen": "",
+      "duracion": 20,
+      "respuestas": [
+        { "texto": "Sólido", "correcta": true },
+        { "texto": "Líquido", "correcta": true },
+        { "texto": "Elástico", "correcta": false },
+        { "texto": "Gaseoso", "correcta": true }
+      ]
+    },
+    {
+      "pregunta": "¿Qué órganos forman parte del sistema respiratorio humano?",
+      "imagen": "",
+      "duracion": 20,
+      "respuestas": [
+        { "texto": "Pulmones", "correcta": true },
+        { "texto": "Tráquea", "correcta": true },
+        { "texto": "Estómago", "correcta": false },
+        { "texto": "Esófago", "correcta": false }
+      ]
+    },
+    {
+      "pregunta": "¿Cuáles de estos materiales son metales?",
+      "imagen": "",
+      "duracion": 20,
+      "respuestas": [
+        { "texto": "Hierro", "correcta": true },
+        { "texto": "Cobre", "correcta": true },
+        { "texto": "Madera", "correcta": false },
+        { "texto": "Plástico", "correcta": false }
+      ]
+    },
+    {
+      "pregunta": "¿Qué necesitan las plantas para realizar la fotosíntesis?",
+      "imagen": "",
+      "duracion": 20,
+      "respuestas": [
+        { "texto": "Luz solar", "correcta": true },
+        { "texto": "Agua", "correcta": true },
+        { "texto": "Dióxido de carbono", "correcta": true },
+        { "texto": "Oxígeno como fuente de carbono", "correcta": false }
+      ]
+    },
+    {
+      "pregunta": "¿Cuáles de estos animales son ovíparos?",
+      "imagen": "",
+      "duracion": 20,
+      "respuestas": [
+        { "texto": "Gallina", "correcta": true },
+        { "texto": "Cocodrilo", "correcta": true },
+        { "texto": "Perro", "correcta": false },
+        { "texto": "Gato", "correcta": false }
+      ]
+    },
+    {
+      "pregunta": "¿Qué gases encontramos en la atmósfera terrestre?",
+      "imagen": "",
+      "duracion": 20,
+      "respuestas": [
+        { "texto": "Nitrógeno", "correcta": true },
+        { "texto": "Oxígeno", "correcta": true },
+        { "texto": "Helio como gas principal", "correcta": false },
+        { "texto": "Dióxido de carbono", "correcta": true }
+      ]
+    },
+    {
+      "pregunta": "¿Cuáles de estos fenómenos son causados por la energía del Sol?",
+      "imagen": "",
+      "duracion": 20,
+      "respuestas": [
+        { "texto": "Evaporación del agua", "correcta": true },
+        { "texto": "Fotosíntesis", "correcta": true },
+        { "texto": "Terremotos", "correcta": false },
+        { "texto": "Calentamiento de la superficie terrestre", "correcta": true }
+      ]
+    },
+    {
+      "pregunta": "¿Qué partes forman parte de una célula animal?",
+      "imagen": "",
+      "duracion": 20,
+      "respuestas": [
+        { "texto": "Núcleo", "correcta": true },
+        { "texto": "Membrana celular", "correcta": true },
+        { "texto": "Pared celular", "correcta": false },
+        { "texto": "Mitocondrias", "correcta": true }
+      ]
+    }
+  ]
+}

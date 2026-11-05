@@ -1,0 +1,117 @@
+{
+  "titulo": "Geografía Mundial",
+  "descripcion": "Descubre cuánto sabes sobre países, capitales y lugares del planeta.",
+  "imagen": "GeografiaMundial",
+  "preguntas": [
+    {
+      "pregunta": "¿Cuáles de estos países están en Europa?",
+      "imagen": "",
+      "duracion": 20,
+      "respuestas": [
+        { "texto": "Portugal", "correcta": true },
+        { "texto": "Japón", "correcta": false },
+        { "texto": "Noruega", "correcta": true },
+        { "texto": "Brasil", "correcta": false }
+      ]
+    },
+    {
+      "pregunta": "¿Cuál es la capital de Australia?",
+      "imagen": "",
+      "duracion": 20,
+      "respuestas": [
+        { "texto": "Canberra", "correcta": true },
+        { "texto": "Sídney", "correcta": false },
+        { "texto": "Melbourne", "correcta": false },
+        { "texto": "Perth", "correcta": false }
+      ]
+    },
+    {
+      "pregunta": "¿Qué océanos existen en la Tierra?",
+      "imagen": "",
+      "duracion": 20,
+      "respuestas": [
+        { "texto": "Atlántico", "correcta": true },
+        { "texto": "Pacífico", "correcta": true },
+        { "texto": "Mediterráneo", "correcta": false },
+        { "texto": "Índico", "correcta": true }
+      ]
+    },
+    {
+      "pregunta": "¿Qué países tienen territorio en América del Sur?",
+      "imagen": "",
+      "duracion": 20,
+      "respuestas": [
+        { "texto": "Argentina", "correcta": true },
+        { "texto": "Colombia", "correcta": true },
+        { "texto": "México", "correcta": false },
+        { "texto": "Chile", "correcta": true }
+      ]
+    },
+    {
+      "pregunta": "¿Cuál es la montaña más alta del mundo?",
+      "imagen": "",
+      "duracion": 20,
+      "respuestas": [
+        { "texto": "Everest", "correcta": true },
+        { "texto": "K2", "correcta": false },
+        { "texto": "Mont Blanc", "correcta": false },
+        { "texto": "Kilimanjaro", "correcta": false }
+      ]
+    },
+    {
+      "pregunta": "¿Qué países forman parte de la península ibérica?",
+      "imagen": "",
+      "duracion": 20,
+      "respuestas": [
+        { "texto": "España", "correcta": true },
+        { "texto": "Portugal", "correcta": true },
+        { "texto": "Francia", "correcta": false },
+        { "texto": "Andorra", "correcta": true }
+      ]
+    },
+    {
+      "pregunta": "¿En qué continente se encuentra Egipto?",
+      "imagen": "",
+      "duracion": 20,
+      "respuestas": [
+        { "texto": "África", "correcta": true },
+        { "texto": "Europa", "correcta": false },
+        { "texto": "Asia", "correcta": false },
+        { "texto": "Oceanía", "correcta": false }
+      ]
+    },
+    {
+      "pregunta": "¿Qué ciudades son capitales de países?",
+      "imagen": "",
+      "duracion": 20,
+      "respuestas": [
+        { "texto": "Tokio", "correcta": true },
+        { "texto": "Nueva York", "correcta": false },
+        { "texto": "Roma", "correcta": true },
+        { "texto": "Barcelona", "correcta": false }
+      ]
+    },
+    {
+      "pregunta": "¿Qué países tienen costa en el mar Mediterráneo?",
+      "imagen": "",
+      "duracion": 20,
+      "respuestas": [
+        { "texto": "Italia", "correcta": true },
+        { "texto": "Grecia", "correcta": true },
+        { "texto": "Alemania", "correcta": false },
+        { "texto": "Marruecos", "correcta": true }
+      ]
+    },
+    {
+      "pregunta": "¿Cuáles son los países más grandes del mundo por superficie?",
+      "imagen": "",
+      "duracion": 20,
+      "respuestas": [
+        { "texto": "Rusia", "correcta": true },
+        { "texto": "Canadá", "correcta": true },
+        { "texto": "China", "correcta": true },
+        { "texto": "España", "correcta": false }
+      ]
+    }
+  ]
+}
