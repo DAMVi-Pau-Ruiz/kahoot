@@ -343,6 +343,7 @@ GameObject:
   - component: {fileID: 247584898}
   - component: {fileID: 247584897}
   - component: {fileID: 247584899}
+  - component: {fileID: 247584900}
   m_Layer: 5
   m_Name: LoadingScreen
   m_TagString: Untagged
@@ -424,14 +425,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LoadingScreenVisuals
   rotatingLogo: {fileID: 39621602}
   rotatingLogoSpeed: 50
-  backgroundShapes: {fileID: 1133960188}
-  movementRadiusX: 80
-  movementRadiusY: 60
-  movementSpeed: 0.15
-  irregularity: 0.35
   loadingText: {fileID: 1845003888}
   loadingMessage: Loading...
   letterDelay: 0.2
+--- !u!114 &247584900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 247584895}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6e7b820d39542e438a9640d416b1113, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MovingBackground
+  backgroundShapes: {fileID: 1133960188}
+  movementRadiusX: 80
+  movementRadiusY: 60
+  movementSpeed: 0.3
+  irregularity: 0.35
 --- !u!1 &395955178
 GameObject:
   m_ObjectHideFlags: 0

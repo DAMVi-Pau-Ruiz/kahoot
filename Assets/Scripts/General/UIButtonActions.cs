@@ -36,4 +36,9 @@ public class UIButtonActions : MonoBehaviour
     {
         UIManager.Instance.GoToKahootPlay();
     }
+
+    public void OpenKahootEditor()
+    {
+        UIManager.Instance.GoToKahootEditor();
+    }
 }

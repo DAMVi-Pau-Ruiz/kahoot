@@ -32,6 +32,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/KahootEditorMenu.unity
     guid: fd7d723e2101331478b71063361b7d80
+  - enabled: 1
+    path: Assets/Scenes/Username.unity
+    guid: c7bd44f73c63c9741a1427aa227458ec
+  - enabled: 1
+    path: Assets/Scenes/Leaderboard.unity
+    guid: 5e3674734851e904b8e63273161bebbb
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

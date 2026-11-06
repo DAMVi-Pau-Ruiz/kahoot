@@ -1,3 +1,4 @@
+
 using System.Collections;
 using UnityEngine;
 using TMPro;
@@ -16,16 +17,26 @@ public class KahootManager : MonoBehaviour
     [SerializeField] private TMP_Text questionCountText;
     [SerializeField] private Button continueButton;
 
+    [Header("Score UI")]
+    [SerializeField] private TMP_Text totalScoreText;
+    [SerializeField] private GameObject streakPanel;
+    [SerializeField] private TMP_Text streakText;
+    [SerializeField] private TMP_Text pointsGainedText;
+
     [SerializeField] private QuestionUI questionUI;
 
     [Header("Test Kahoot")]
     [SerializeField] private TextAsset testKahootJson;
+
+    private int totalScore = 0;
+    private int correctStreak = 0;
 
     private KahootData currentKahoot;
     private KahootGameState currentState;
 
     private int currentQuestionIndex;
     private int selectedAnswerIndex = -1;
+    private bool selectedAnswerCorrect;
 
     private bool continuePressed;
 
@@ -41,14 +52,12 @@ public class KahootManager : MonoBehaviour
     {
         continueButton.gameObject.SetActive(false);
 
-        // Comprobar si hay un Kahoot seleccionado
         if (KahootSession.CurrentKahoot != null)
         {
             StartGame(KahootSession.CurrentKahoot);
         }
         else if (testKahootJson != null)
         {
-            // Cargar Kahoot de prueba
             KahootData kahoot =
                 JsonUtility.FromJson<KahootData>(testKahootJson.text);
 
@@ -78,6 +87,15 @@ public class KahootManager : MonoBehaviour
         currentKahoot = kahoot;
         currentQuestionIndex = 0;
 
+        totalScore = 0;
+        correctStreak = 0;
+
+        totalScoreText.text = "0";
+        streakPanel.SetActive(false);
+        pointsGainedText.gameObject.SetActive(false);
+
+        PlayerSession.SetScore(0);
+
         if (gameCoroutine != null)
             StopCoroutine(gameCoroutine);
 
@@ -96,27 +114,60 @@ public class KahootManager : MonoBehaviour
 
             yield return StartCoroutine(ShowQuestion());
 
+            remainingTimeText.gameObject.SetActive(false);
+
             questionUI.ShowResults(selectedAnswerIndex);
 
-            continueButton.gameObject.SetActive(true);
-            continuePressed = false;
+            // Si es la última pregunta, no esperamos aquí.
+            if (currentQuestionIndex < currentKahoot.preguntas.Count - 1)
+            {
+                continueButton.gameObject.SetActive(true);
+                continuePressed = false;
 
-            yield return new WaitUntil(() => continuePressed);
+                yield return new WaitUntil(() => continuePressed);
 
-            continueButton.gameObject.SetActive(false);
+                continueButton.gameObject.SetActive(false);
+            }
 
             currentQuestionIndex++;
         }
 
         currentState = KahootGameState.FINISHED;
         remainingTimeText.text = "FIN";
-        //Se ha acabado el juego
+
+        PlayerSession.SetScore(totalScore);
+
+        Debug.Log("Puntuación final: " + totalScore);
+
+        // Mostramos el botón para continuar al leaderboard.
+        continueButton.gameObject.SetActive(true);
+        continuePressed = false;
+
+        // Esperamos a que el jugador pulse Siguiente.
+        yield return new WaitUntil(() => continuePressed);
+
+        continueButton.gameObject.SetActive(false);
+
+        // Guardamos el resultado.
+        bool saved = RankingXMLManager.SaveResult(
+            KahootSession.SelectedKahootPath,
+            PlayerSession.Username,
+            PlayerSession.Score
+        );
+
+        if (saved)
+        {
+            UIManager.Instance.GoToLeaderboard();
+        }
     }
 
     private IEnumerator ShowQuestion()
     {
+        remainingTimeText.gameObject.SetActive(true);
+        pointsGainedText.gameObject.SetActive(false);
         currentState = KahootGameState.QUESTION;
         selectedAnswerIndex = -1;
+        selectedAnswerCorrect = false;
 
         PreguntaData question =
             currentKahoot.preguntas[currentQuestionIndex];
@@ -143,6 +194,9 @@ public class KahootManager : MonoBehaviour
             currentState = KahootGameState.REVEAL_ANSWER;
         }
 
+        // Calculamos la puntuación antes de mostrar los resultados.
+        CalculateScore(remainingTime, question.duracion);
+
         questionUI.DisableAnswers();
     }
 
@@ -152,7 +206,61 @@ public class KahootManager : MonoBehaviour
             return;
 
         selectedAnswerIndex = index;
+        selectedAnswerCorrect = correct;
+
         currentState = KahootGameState.REVEAL_ANSWER;
+    }
+
+    private void CalculateScore(float remainingTime, float duration)
+    {
+        int questionScore = 0;
+
+        if (selectedAnswerCorrect)
+        {
+            correctStreak++;
+
+            int basePoints = 100;
+            int timeBonus = 0;
+
+            if (duration > 0)
+            {
+                timeBonus = Mathf.RoundToInt(
+                    100f * Mathf.Clamp01(remainingTime / duration)
+                );
+            }
+
+            int streakBonus = (correctStreak - 1) * 25;
+
+            questionScore = basePoints + timeBonus + streakBonus;
+
+            totalScore += questionScore;
+        }
+        else
+        {
+            correctStreak = 0;
+        }
+
+        // Actualizamos la puntuación permanente.
+        totalScoreText.text = totalScore.ToString();
+
+        // Actualizamos la racha.
+        streakPanel.SetActive(correctStreak >= 2);
+
+        if (correctStreak >= 2)
+        {
+            streakText.text = correctStreak.ToString();
+        }
+
+        // Mostramos los puntos obtenidos si ha respondido.
+        if (selectedAnswerIndex != -1)
+        {
+            pointsGainedText.text = "+" + questionScore;
+            pointsGainedText.gameObject.SetActive(true);
+        }
+
+        PlayerSession.SetScore(totalScore);
+
+        Debug.Log("Puntuación total: " + totalScore);
     }
 
     private void ContinueGame()

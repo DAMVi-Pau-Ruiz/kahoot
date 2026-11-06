@@ -322,6 +322,10 @@ MonoBehaviour:
   selectorScene: KahootSelector
   optionsScene: Options
   aboutScene: About
+  validationScene: KahootValidation
+  playScene: KahootPlay
+  editorScene: KahootEditor
+  leaderboardScene: Leaderboard
 --- !u!1 &714347640
 GameObject:
   m_ObjectHideFlags: 0
@@ -493,7 +497,12 @@ MonoBehaviour:
     description: Play a kahoot
     icon: {fileID: 0}
     backgorund: {fileID: 0}
-    sceneName: KahootSelector
+    sceneName: Username
+  - modeName: Editor
+    description: create or edit a Kahoot
+    icon: {fileID: 0}
+    backgorund: {fileID: 0}
+    sceneName: KahootEditorMenu
   - modeName: Options
     description: Configure the game
     icon: {fileID: 0}

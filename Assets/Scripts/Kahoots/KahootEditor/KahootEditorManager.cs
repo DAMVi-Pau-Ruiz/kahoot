@@ -173,6 +173,8 @@ public class KahootEditorManager : MonoBehaviour
         feedbackText.text = "¡Kahoot guardado correctamente!";
 
         Debug.Log("Kahoot guardado en: " + filePath);
+
+        UIManager.Instance.GoToMainMenu();
     }
 
     private string MakeSafeFileName(string name)
