@@ -35,24 +35,38 @@ public class CarouselManager : MonoBehaviour
     {
         foreach (ModeData mode in gameModes)
         {
-            Debug.Log("INICIO: " + mode.modeName);
-
             CarouselCard newCard = Instantiate(cardPrefab, cardsContainer);
-
-            Debug.Log("INSTANTIADA: " + mode.modeName);
 
             newCard.SetData(mode);
 
-            Debug.Log("DATOS ASIGNADOS: " + mode.modeName);
-
-            newCard.SetButtonAction(() => OpenMode(mode.sceneName));
-
-            Debug.Log("BOTON ASIGNADO: " + mode.modeName);
+            newCard.SetButtonAction(() => OpenMode(mode));
 
             spawnedCards.Add(newCard);
         }
+    }
 
-        Debug.Log("TOTAL: " + spawnedCards.Count);
+    private void OpenMode(ModeData mode)
+    {
+        Debug.Log("BOTÓN PULSADO: " + mode.modeName);
+
+        switch (mode.modeType)
+        {
+            case GameModeType.PLAY:
+                KahootSession.SelectionMode = KahootSelectionMode.PLAY;
+                break;
+
+            case GameModeType.EDIT:
+                KahootSession.SelectionMode = KahootSelectionMode.EDIT;
+                break;
+
+            case GameModeType.RANKING:
+                KahootSession.SelectionMode = KahootSelectionMode.RANKING;
+                break;
+        }
+
+        Debug.Log("MODO ASIGNADO: " + KahootSession.SelectionMode);
+
+        SceneManager.LoadScene(mode.sceneName);
     }
 
     private void UpdateCarousel(bool animate = true)

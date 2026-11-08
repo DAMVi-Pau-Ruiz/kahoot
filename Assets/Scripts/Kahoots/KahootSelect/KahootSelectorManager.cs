@@ -145,8 +145,59 @@ public class KahootSelectorManager : MonoBehaviour
     private void OnKahootSelected(string jsonPath)
     {
         KahootSession.SelectedKahootPath = jsonPath;
-        KahootSession.CurrentKahoot = null;
 
-        UIManager.Instance.GoToKahootValidation();
+        KahootSession.CurrentKahoot = LoadKahootData(jsonPath);
+
+        Debug.Log("MODO DE SELECCIÓN: " + KahootSession.SelectionMode);
+
+        if (KahootSession.CurrentKahoot == null)
+            return;
+
+        switch (KahootSession.SelectionMode)
+        {
+            case KahootSelectionMode.PLAY:
+                UIManager.Instance.GoToKahootValidation();
+                break;
+
+            case KahootSelectionMode.EDIT:
+                UIManager.Instance.GoToKahootEditor();
+                break;
+
+            case KahootSelectionMode.RANKING:
+                UIManager.Instance.GoToLeaderboard();
+                break;
+        }
+    }
+
+    private KahootData LoadKahootData(string path)
+    {
+        string json;
+
+        if (path.StartsWith("RESOURCE:"))
+        {
+            string resourcePath = path.Replace("RESOURCE:", "");
+
+            TextAsset file = Resources.Load<TextAsset>(resourcePath);
+
+            if (file == null)
+            {
+                Debug.LogError("No se encontró el Kahoot.");
+                return null;
+            }
+
+            json = file.text;
+        }
+        else
+        {
+            if (!File.Exists(path))
+            {
+                Debug.LogError("No existe el archivo: " + path);
+                return null;
+            }
+
+            json = File.ReadAllText(path);
+        }
+
+        return JsonUtility.FromJson<KahootData>(json);
     }
 }

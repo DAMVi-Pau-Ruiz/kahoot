@@ -498,21 +498,31 @@ MonoBehaviour:
     icon: {fileID: 0}
     backgorund: {fileID: 0}
     sceneName: Username
+    modeType: 0
   - modeName: Editor
     description: create or edit a Kahoot
     icon: {fileID: 0}
     backgorund: {fileID: 0}
     sceneName: KahootEditorMenu
+    modeType: 0
   - modeName: Options
     description: Configure the game
     icon: {fileID: 0}
     backgorund: {fileID: 0}
     sceneName: Options
+    modeType: 0
   - modeName: About
     description: information of the game
     icon: {fileID: 0}
     backgorund: {fileID: 0}
     sceneName: About
+    modeType: 0
+  - modeName: Leaderboard
+    description: leaderboard of all kahoots
+    icon: {fileID: 0}
+    backgorund: {fileID: 0}
+    sceneName: KahootSelector
+    modeType: 0
   cardPrefab: {fileID: 2309630253583261625, guid: 17ff941deef6ea24a92a9358cd6165d4, type: 3}
   cardsContainer: {fileID: 1611466113}
   padding: 40

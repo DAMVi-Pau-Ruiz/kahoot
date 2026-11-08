@@ -1,5 +1,11 @@
-
 using UnityEngine;
+
+public enum GameModeType
+{
+    PLAY,
+    EDIT,
+    RANKING
+}
 
 [System.Serializable]
 public class ModeData
@@ -10,4 +16,6 @@ public class ModeData
     public Sprite backgorund;
 
     public string sceneName;
+
+    public GameModeType modeType;
 }
