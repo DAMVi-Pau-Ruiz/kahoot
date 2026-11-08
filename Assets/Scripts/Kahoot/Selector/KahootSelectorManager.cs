@@ -62,16 +62,19 @@ public class KahootSelectorManager : MonoBehaviour
 
         KahootCard card = Instantiate(kahootCardPrefab, content);
 
-        card.SetData(kahoot, portada, () => {SelectKahoot(kahoot);});
+        card.SetData(kahoot, portada, () => {SelectKahoot(kahoot, json);});
     }
 
-    private void SelectKahoot(KahootData kahoot)
+    private void SelectKahoot(KahootData kahoot, string json)
     {
+        AppManager.Instance.SetCurrentKahoot(kahoot, json);
+
         switch (AppManager.Instance.CurrentAction)
         {
             case AppAction.PLAY:
+
                 Debug.Log("Seleccionado para jugar: " + kahoot.titulo);
-                // Aquí verificaremos el JSON y comenzaremos la partida.
+                ChangeSceneManager.Instance.GoToKahootValidator();
                 break;
 
             case AppAction.EDITOR:
@@ -82,5 +85,10 @@ public class KahootSelectorManager : MonoBehaviour
                 // Aquí abriremos el leaderboard.
                 break;
         }
+    }
+
+    public void GoToMenu()
+    {
+        ChangeSceneManager.Instance.GoToMainMenu();
     }
 }

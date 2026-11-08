@@ -5,6 +5,9 @@ public class AppManager : MonoBehaviour
     public static AppManager Instance { get; private set; }
     public AppAction CurrentAction { get; private set; }
 
+    public KahootData CurrentKahoot { get; private set; }
+    public string CurrentKahootJson { get; private set; }
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -22,5 +25,11 @@ public class AppManager : MonoBehaviour
         CurrentAction = action;
 
         Debug.Log("Actual action: " + CurrentAction);
+    }
+
+    public void SetCurrentKahoot(KahootData kahoot, string json)
+    {
+        CurrentKahoot = kahoot;
+        CurrentKahootJson = json;
     }
 }

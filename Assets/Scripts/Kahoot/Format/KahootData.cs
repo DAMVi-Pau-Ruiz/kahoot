@@ -15,7 +15,8 @@ public class KahootData
 public class PreguntaData
 {
     public string pregunta;
-    public string duracion;
+    public int duracion;
+    public string imagen;
 
     public List<RespuestaData> respuestas;
 }

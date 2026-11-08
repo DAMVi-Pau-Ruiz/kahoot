@@ -809,8 +809,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1738473884}
-        m_TargetAssemblyTypeName: KahootValidationManager, Assembly-CSharp
-        m_MethodName: StartKahoot
+        m_TargetAssemblyTypeName: KahootValidatorManager, Assembly-CSharp
+        m_MethodName: GoToKahootPlay
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1079,8 +1079,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1738473884}
-        m_TargetAssemblyTypeName: KahootValidationManager, Assembly-CSharp
-        m_MethodName: BackToSelector
+        m_TargetAssemblyTypeName: KahootValidatorManager, Assembly-CSharp
+        m_MethodName: GoToKahootSelect
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1477,11 +1477,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1738473882}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b9a8ea884795e94189383360eb1680a, type: 3}
+  m_Script: {fileID: 11500000, guid: 7bbf35545697b524eb4438de5dc53243, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::KahootValidationManager
-  validPanel: {fileID: 2129426986}
-  invalidPanel: {fileID: 395955178}
+  loadingPanel: {fileID: 247584895}
+  successPanel: {fileID: 2129426986}
+  errorPanel: {fileID: 395955178}
 --- !u!1 &1845003886
 GameObject:
   m_ObjectHideFlags: 0
