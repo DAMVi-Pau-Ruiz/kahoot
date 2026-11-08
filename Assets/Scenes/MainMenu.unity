@@ -274,58 +274,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &537796831
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 537796832}
-  - component: {fileID: 537796833}
-  m_Layer: 0
-  m_Name: UIManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &537796832
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 537796831}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 438.9776, y: 189.80618, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &537796833
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 537796831}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32d92a15abe210c459d9daa0c643e68d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UIManager
-  mainMenuScene: MainMenu
-  selectorScene: KahootSelector
-  optionsScene: Options
-  aboutScene: About
-  validationScene: KahootValidation
-  playScene: KahootPlay
-  editorScene: KahootEditor
-  leaderboardScene: Leaderboard
 --- !u!1 &714347640
 GameObject:
   m_ObjectHideFlags: 0
@@ -401,6 +349,50 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &787708138
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 787708139}
+  - component: {fileID: 787708140}
+  m_Layer: 0
+  m_Name: AppManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &787708139
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 787708138}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 662.21356, y: 353.16223, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &787708140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 787708138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac5f837b6cdb5fc44bd920cd5a4b7522, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AppManager
 --- !u!1 &1117740030
 GameObject:
   m_ObjectHideFlags: 0
@@ -412,7 +404,6 @@ GameObject:
   - component: {fileID: 1117740031}
   - component: {fileID: 1117740033}
   - component: {fileID: 1117740032}
-  - component: {fileID: 1117740034}
   m_Layer: 5
   m_Name: Carousel
   m_TagString: Untagged
@@ -480,54 +471,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1117740030}
   m_CullTransparentMesh: 1
---- !u!114 &1117740034
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1117740030}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ede3535e6956df44bb7c833f242b572, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CarouselManager
-  gameModes:
-  - modeName: Play
-    description: Play a kahoot
-    icon: {fileID: 0}
-    backgorund: {fileID: 0}
-    sceneName: Username
-    modeType: 0
-  - modeName: Editor
-    description: create or edit a Kahoot
-    icon: {fileID: 0}
-    backgorund: {fileID: 0}
-    sceneName: KahootEditorMenu
-    modeType: 0
-  - modeName: Options
-    description: Configure the game
-    icon: {fileID: 0}
-    backgorund: {fileID: 0}
-    sceneName: Options
-    modeType: 0
-  - modeName: About
-    description: information of the game
-    icon: {fileID: 0}
-    backgorund: {fileID: 0}
-    sceneName: About
-    modeType: 0
-  - modeName: Leaderboard
-    description: leaderboard of all kahoots
-    icon: {fileID: 0}
-    backgorund: {fileID: 0}
-    sceneName: KahootSelector
-    modeType: 0
-  cardPrefab: {fileID: 2309630253583261625, guid: 17ff941deef6ea24a92a9358cd6165d4, type: 3}
-  cardsContainer: {fileID: 1611466113}
-  padding: 40
-  sideScale: 0.75
-  animationDuration: 0.3
 --- !u!1 &1151726612
 GameObject:
   m_ObjectHideFlags: 0
@@ -823,8 +766,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1117740034}
-        m_TargetAssemblyTypeName: CarouselManager, Assembly-CSharp
+      - m_Target: {fileID: 2049593597}
+        m_TargetAssemblyTypeName: MainMenuManager, Assembly-CSharp
         m_MethodName: Previous
         m_Mode: 1
         m_Arguments:
@@ -873,6 +816,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1334154811}
   m_CullTransparentMesh: 1
+--- !u!1 &1400885497
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1400885498}
+  - component: {fileID: 1400885499}
+  m_Layer: 0
+  m_Name: ChangeSceneManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1400885498
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1400885497}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 662.21356, y: 353.16223, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1400885499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1400885497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e5bd4d8ee8f41346a64b151fef4686d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ChangeSceneManager
 --- !u!1 &1467893554
 GameObject:
   m_ObjectHideFlags: 0
@@ -1476,6 +1463,72 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2034979142}
   m_CullTransparentMesh: 1
+--- !u!1 &2049593595
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2049593596}
+  - component: {fileID: 2049593597}
+  m_Layer: 0
+  m_Name: MainMenuManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2049593596
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2049593595}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 620.5324, y: 352.43912, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2049593597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2049593595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3f8b483b28a9ca409ff7876bd67f111, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MainMenuManager
+  options:
+  - title: Play
+    description: Play a Kahoot from the list
+    icon: {fileID: 0}
+    action: 1
+  - title: Edit
+    description: Create or edit a Kahoot
+    icon: {fileID: 0}
+    action: 5
+  - title: Options
+    description: 
+    icon: {fileID: 0}
+    action: 6
+  - title: About
+    description: Information about the application
+    icon: {fileID: 0}
+    action: 4
+  optionPrefab: {fileID: 2309630253583261625, guid: 17ff941deef6ea24a92a9358cd6165d4, type: 3}
+  optionsContainer: {fileID: 1611466113}
+  spacing: 40
+  sideScale: 0.75
+  animationDuration: 0.3
 --- !u!1 &2068032118
 GameObject:
   m_ObjectHideFlags: 0
@@ -1559,8 +1612,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1117740034}
-        m_TargetAssemblyTypeName: CarouselManager, Assembly-CSharp
+      - m_Target: {fileID: 2049593597}
+        m_TargetAssemblyTypeName: MainMenuManager, Assembly-CSharp
         m_MethodName: Next
         m_Mode: 1
         m_Arguments:
@@ -1694,4 +1747,6 @@ SceneRoots:
   - {fileID: 1272218866}
   - {fileID: 1467893558}
   - {fileID: 447713141}
-  - {fileID: 537796832}
+  - {fileID: 2049593596}
+  - {fileID: 787708139}
+  - {fileID: 1400885498}

@@ -858,7 +858,6 @@ GameObject:
   - component: {fileID: 1339466897}
   - component: {fileID: 1339466896}
   - component: {fileID: 1339466895}
-  - component: {fileID: 1339466898}
   m_Layer: 5
   m_Name: Return
   m_TagString: Untagged
@@ -929,19 +928,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1339466896}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1339466898}
-        m_TargetAssemblyTypeName: UIButtonActions, Assembly-CSharp
-        m_MethodName: ReturnToMainMenu
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1339466896
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -980,18 +967,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1339466893}
   m_CullTransparentMesh: 1
---- !u!114 &1339466898
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1339466893}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 074309b8dc08d1c428851b9360e80eb4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UIButtonActions
 --- !u!1 &1689367743
 GameObject:
   m_ObjectHideFlags: 0
@@ -1001,7 +976,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1689367745}
-  - component: {fileID: 1689367744}
+  - component: {fileID: 1689367746}
   m_Layer: 0
   m_Name: KahootSelectorManager
   m_TagString: Untagged
@@ -1009,20 +984,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1689367744
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1689367743}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04ef612ebfcb64c4b845da51cd33a186, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::KahootSelectorManager
-  content: {fileID: 423612881}
-  kahootCardPrefab: {fileID: 3685836494885179882, guid: bba87165ab238ee4eb33e91da255f114, type: 3}
 --- !u!4 &1689367745
 Transform:
   m_ObjectHideFlags: 0
@@ -1038,6 +999,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1689367746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1689367743}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79fd71271f709c04b93ffd46c5a65382, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KahootSelectorManager
+  content: {fileID: 423612881}
+  kahootCardPrefab: {fileID: 3685836494885179882, guid: bba87165ab238ee4eb33e91da255f114, type: 3}
+  imageResourcesFolder: KahootImages
 --- !u!1 &1697582268
 GameObject:
   m_ObjectHideFlags: 0

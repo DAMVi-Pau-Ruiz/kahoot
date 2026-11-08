@@ -634,11 +634,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 8837586617282366950}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9ac9030b57e82a40adb309ce77aa7a9, type: 3}
+  m_Script: {fileID: 11500000, guid: e6572c87ebbd5384ba5443a55dc7eec1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CarouselCard
-  iconImage: {fileID: 8384398769758254964}
-  backgroundImage: {fileID: 7685280845811552348}
   titleText: {fileID: 3226908616861084263}
-  descriptionText: {fileID: 6743103877268694722}
-  cardButton: {fileID: 3811782997404627199}
+  description: {fileID: 6743103877268694722}
+  iconImage: {fileID: 8384398769758254964}
+  optionButton: {fileID: 3811782997404627199}

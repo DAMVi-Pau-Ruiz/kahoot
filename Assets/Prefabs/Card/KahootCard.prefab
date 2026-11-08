@@ -286,13 +286,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 2259227222541401216}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f78fc8f893bb3548835da4701ff9a9e, type: 3}
+  m_Script: {fileID: 11500000, guid: a6c7cf54db439994dbd2393a6f156cc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::KahootCard
-  iconImage: {fileID: 4828450841033362342}
   titleText: {fileID: 7126198045567051183}
   descriptionText: {fileID: 7758915017298137507}
-  selectButton: {fileID: 4893177315710519671}
+  image: {fileID: 4828450841033362342}
+  button: {fileID: 4893177315710519671}
 --- !u!1 &2677144894576184872
 GameObject:
   m_ObjectHideFlags: 0
