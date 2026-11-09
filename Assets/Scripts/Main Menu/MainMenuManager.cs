@@ -175,6 +175,7 @@ public class MainMenuManager : MonoBehaviour
         }
 
         selectedIndex++;
+        AudioManager.Instance.PlaySFX(SFXType.SLIDE);
         UpdateCarousel();
     }
 
@@ -186,6 +187,7 @@ public class MainMenuManager : MonoBehaviour
         }
 
         selectedIndex--;
+        AudioManager.Instance.PlaySFX(SFXType.SLIDE);
         UpdateCarousel();
     }
 
@@ -205,6 +207,10 @@ public class MainMenuManager : MonoBehaviour
 
             case AppAction.EDITOR:
                 ChangeSceneManager.Instance.GoToEditorMenu();
+                break;
+
+            case AppAction.EXIT:
+                //exits the app
                 break;
         }
     }

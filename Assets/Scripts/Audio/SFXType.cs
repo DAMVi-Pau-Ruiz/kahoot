@@ -1,0 +1,10 @@
+
+public enum SFXType
+{
+    BUTTON_CLICK,
+    SLIDE,
+    CORRECT_ANSWER,
+    WRONG_ANSWER,
+    COUNTDOWN,
+    TIMER_END
+}

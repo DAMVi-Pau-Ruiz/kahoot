@@ -6,5 +6,6 @@ public enum AppAction
     ERRORS,
     ABOUT,
     EDITOR,
-    OPTIONS
+    OPTIONS,
+    EXIT
 }
