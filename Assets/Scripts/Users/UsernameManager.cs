@@ -20,4 +20,9 @@ public class UsernameManager : MonoBehaviour
 
         ChangeSceneManager.Instance.GoToKahootSelector();
     }
+
+    public void GoToMenu()
+    {
+        ChangeSceneManager.Instance.GoToMainMenu();
+    }
 }

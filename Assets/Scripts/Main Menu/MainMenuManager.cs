@@ -29,6 +29,9 @@ public class MainMenuManager : MonoBehaviour
     private void Start()
     {
         GenerateOptions();
+
+        selectedIndex = GetInitialSelectedIndex();
+
         UpdateCarousel(false);
     }
 
@@ -195,6 +198,27 @@ public class MainMenuManager : MonoBehaviour
             case AppAction.PLAY:
                 ChangeSceneManager.Instance.GoToUsername();
                 break;
+
+            case AppAction.LEADERBOARD:
+                ChangeSceneManager.Instance.GoToKahootSelector();
+                break;
+
+            case AppAction.EDITOR:
+                ChangeSceneManager.Instance.GoToEditorMenu();
+                break;
         }
+    }
+
+    private int GetInitialSelectedIndex()
+    {
+        for (int i = 0; i < spawnedOptions.Count; i++)
+        {
+            if (options[i].action == AppManager.Instance.CurrentAction)
+            {
+                return i;
+            }
+        }
+
+        return 0;
     }
 }

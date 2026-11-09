@@ -41,4 +41,19 @@ public class ChangeSceneManager : MonoBehaviour
     {
         SceneManager.LoadScene("KahootValidation");
     }
+
+    public void GoToLeaderboard()
+    {
+        SceneManager.LoadScene("Leaderboard");
+    }
+
+    public void GoToEditorMenu()
+    {
+        SceneManager.LoadScene("KahootEditorMenu");
+    }
+
+    public void GoToKahootEditor()
+    {
+        SceneManager.LoadScene("KahootEditor");
+    }
 }

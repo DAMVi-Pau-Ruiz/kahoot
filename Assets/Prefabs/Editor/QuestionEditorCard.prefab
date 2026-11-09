@@ -2784,7 +2784,7 @@ GameObject:
   - component: {fileID: 8881673304690182729}
   - component: {fileID: 950086617401787239}
   - component: {fileID: 4857563479480754329}
-  - component: {fileID: 8140656939987682920}
+  - component: {fileID: 7478280694225824010}
   m_Layer: 5
   m_Name: QuestionEditorCard
   m_TagString: Untagged
@@ -2850,7 +2850,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &8140656939987682920
+--- !u!114 &7478280694225824010
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2859,39 +2859,39 @@ MonoBehaviour:
   m_GameObject: {fileID: 2259227222541401216}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ffff2b0c08b65f44a7f2370abf817a5, type: 3}
+  m_Script: {fileID: 11500000, guid: 23e2be777c1bee6418733c5106476918, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::QuestionEditor
+  m_EditorClassIdentifier: Assembly-CSharp::QuestionEditorCard
   questionInput: {fileID: 2838340927026186894}
-  answerDropdown: {fileID: 2692961320000232478}
-  template2Answers: {fileID: 1016890469742892754}
-  template3Answers: {fileID: 8116170104950860186}
-  template4Answers: {fileID: 6222667760515881616}
-  answerInputs2:
+  durationInput: {fileID: 5285957615033338695}
+  answersDropdown: {fileID: 2692961320000232478}
+  answers2Panel: {fileID: 1016890469742892754}
+  answers3Panel: {fileID: 8116170104950860186}
+  answers4Panel: {fileID: 6222667760515881616}
+  answers2Input:
   - {fileID: 5729436626915411109}
   - {fileID: 3284777425619146915}
-  answerChecks2:
+  answers2Correct:
   - {fileID: 8013690119296237181}
   - {fileID: 3204861690314588543}
-  answerInputs3:
+  answers3Input:
   - {fileID: 1838040067116635609}
   - {fileID: 8059184996483973043}
   - {fileID: 518380942967087942}
-  answerChecks3:
+  answers3Correct:
   - {fileID: 8610823666547387279}
   - {fileID: 6732098043533573275}
   - {fileID: 5227223145699080442}
-  answerInputs4:
+  answers4Input:
   - {fileID: 2690800716772383813}
   - {fileID: 3736478217467428978}
   - {fileID: 909304522502663090}
   - {fileID: 3048593636975305018}
-  answerChecks4:
+  answers4Correct:
   - {fileID: 3282072251392690412}
   - {fileID: 8381867707101906290}
   - {fileID: 1177333374515203716}
   - {fileID: 2729306758804343836}
-  durationInput: {fileID: 5285957615033338695}
 --- !u!1 &2402923943202269271
 GameObject:
   m_ObjectHideFlags: 0
@@ -4148,7 +4148,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Enter text...
+  m_text: Duration
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 47234ffd2d5ef73498eee50975f43e38, type: 2}
   m_sharedMaterial: {fileID: 1494465223767087973, guid: 47234ffd2d5ef73498eee50975f43e38, type: 2}
@@ -4974,7 +4974,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Enter text...
+  m_text: Question
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 47234ffd2d5ef73498eee50975f43e38, type: 2}
   m_sharedMaterial: {fileID: 1494465223767087973, guid: 47234ffd2d5ef73498eee50975f43e38, type: 2}
@@ -9548,7 +9548,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Option A
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 47234ffd2d5ef73498eee50975f43e38, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -9615,6 +9615,6 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}

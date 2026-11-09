@@ -1512,6 +1512,10 @@ MonoBehaviour:
     description: Play a Kahoot from the list
     icon: {fileID: 0}
     action: 1
+  - title: Leaderboard
+    description: See the ranking of any kahoot
+    icon: {fileID: 0}
+    action: 2
   - title: Edit
     description: Create or edit a Kahoot
     icon: {fileID: 0}

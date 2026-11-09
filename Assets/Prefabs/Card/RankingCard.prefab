@@ -576,7 +576,7 @@ GameObject:
   - component: {fileID: 7483439342735854406}
   - component: {fileID: 1478846465765296297}
   - component: {fileID: 5657166107340297783}
-  - component: {fileID: 6009998984540029179}
+  - component: {fileID: 3733437788446955909}
   m_Layer: 5
   m_Name: RankingCard
   m_TagString: Untagged
@@ -663,7 +663,7 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
---- !u!114 &6009998984540029179
+--- !u!114 &3733437788446955909
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -672,9 +672,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 7378267159630951264}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 743623b79071074498f7dc0f9335e540, type: 3}
+  m_Script: {fileID: 11500000, guid: 2cd7d750713f66f4e92dc56d5f934513, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::RankingEntryUI
+  m_EditorClassIdentifier: Assembly-CSharp::LeaderboardPlayerUI
   positionText: {fileID: 5584556613992908296}
   usernameText: {fileID: 5176034549415399443}
   scoreText: {fileID: 67380081941385582}
+  playerImage: {fileID: 2019407859558213342}

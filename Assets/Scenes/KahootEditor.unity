@@ -394,9 +394,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1090270518}
-        m_TargetAssemblyTypeName: UIButtonActions, Assembly-CSharp
-        m_MethodName: ReturnToMainMenu
+      - m_Target: {fileID: 849584000}
+        m_TargetAssemblyTypeName: KahootEditorManager, Assembly-CSharp
+        m_MethodName: DiscardKahoot
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1020,7 +1020,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 849583998}
+      - m_Target: {fileID: 849584000}
         m_TargetAssemblyTypeName: KahootEditorManager, Assembly-CSharp
         m_MethodName: AddQuestion
         m_Mode: 1
@@ -1111,18 +1111,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 329943972}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03b53b51f2261b94bb4fd1b522581e98, type: 3}
+  m_Script: {fileID: 11500000, guid: 4549a8ab06ffaf7449f4850b48c73385, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::KahootImageSelector
-  availableImages:
-  - {fileID: 21300000, guid: 885d0f43ce00e264ea192a22584ad4d5, type: 3}
-  - {fileID: 21300000, guid: 076e45cc100540748b09eda9a453645f, type: 3}
-  - {fileID: 21300000, guid: b43ce6d3d37770446ae1fd8c6f84606d, type: 3}
-  - {fileID: 21300000, guid: 7b456ddf87ba9cc438ece9bdc82fd1e5, type: 3}
-  - {fileID: 21300000, guid: 49d624996039f5741b6d9b9cb40e6612, type: 3}
+  m_EditorClassIdentifier: Assembly-CSharp::KahootEditorImageSelector
   previewImage: {fileID: 1798888336}
-  imageName: {fileID: 822483059}
+  imageNameText: {fileID: 822483059}
   imageSlider: {fileID: 52731839}
+  imageResourcesFolder: KahootImages
 --- !u!1 &341330380
 GameObject:
   m_ObjectHideFlags: 0
@@ -1554,7 +1549,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Enter text...
+  m_text: Kahoot title
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 47234ffd2d5ef73498eee50975f43e38, type: 2}
   m_sharedMaterial: {fileID: 1494465223767087973, guid: 47234ffd2d5ef73498eee50975f43e38, type: 2}
@@ -2264,7 +2259,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 849583999}
-  - component: {fileID: 849583998}
+  - component: {fileID: 849584000}
   m_Layer: 0
   m_Name: KahootEditorManager
   m_TagString: Untagged
@@ -2272,24 +2267,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &849583998
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 849583997}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c2e3bc95eb4a2043acbd17d86673a96, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::KahootEditorManager
-  questionPrefab: {fileID: 2259227222541401216, guid: 76ff4333da94fbf49871a3d6f527a50c, type: 3}
-  content: {fileID: 1539385112}
-  titleInput: {fileID: 756760323}
-  descriptionInput: {fileID: 2001155955}
-  imageSelector: {fileID: 329943974}
-  feedbackText: {fileID: 563009690}
 --- !u!4 &849583999
 Transform:
   m_ObjectHideFlags: 0
@@ -2305,6 +2282,23 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &849584000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 849583997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b7fe5a45c2c9054d89cb1d626b28200, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KahootEditorManager
+  titleInput: {fileID: 756760323}
+  descriptionInput: {fileID: 2001155955}
+  imageSelector: {fileID: 329943974}
+  questionsContent: {fileID: 1539385112}
+  questionPrefab: {fileID: 7478280694225824010, guid: 76ff4333da94fbf49871a3d6f527a50c, type: 3}
 --- !u!1 &850651957
 GameObject:
   m_ObjectHideFlags: 0
@@ -2515,7 +2509,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 849583998}
+      - m_Target: {fileID: 849584000}
         m_TargetAssemblyTypeName: KahootEditorManager, Assembly-CSharp
         m_MethodName: SaveKahoot
         m_Mode: 1
@@ -2717,50 +2711,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1090078798}
   m_CullTransparentMesh: 1
---- !u!1 &1090270517
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1090270519}
-  - component: {fileID: 1090270518}
-  m_Layer: 0
-  m_Name: UIButtonActions
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1090270518
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1090270517}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 074309b8dc08d1c428851b9360e80eb4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UIButtonActions
---- !u!4 &1090270519
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1090270517}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 438.9776, y: 189.80618, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1093023818
 GameObject:
   m_ObjectHideFlags: 0
@@ -3070,7 +3020,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 849583998}
+      - m_Target: {fileID: 849584000}
         m_TargetAssemblyTypeName: KahootEditorManager, Assembly-CSharp
         m_MethodName: DeleteQuestion
         m_Mode: 1
@@ -3500,7 +3450,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Enter text...
+  m_text: Kahoot description
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 47234ffd2d5ef73498eee50975f43e38, type: 2}
   m_sharedMaterial: {fileID: 1494465223767087973, guid: 47234ffd2d5ef73498eee50975f43e38, type: 2}
@@ -4132,4 +4082,3 @@ SceneRoots:
   - {fileID: 542154958}
   - {fileID: 849583999}
   - {fileID: 329943973}
-  - {fileID: 1090270519}

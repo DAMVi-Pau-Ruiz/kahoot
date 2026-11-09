@@ -22,7 +22,7 @@ public class KahootSelectorManager : MonoBehaviour
 
         foreach (TextAsset file in files)
         {
-            CreateKahootCard(file.text);
+            CreateKahootCard(file.text, "Resources/DefaultKahoots/" + file.name + ".json");
         }
     }
 
@@ -40,11 +40,11 @@ public class KahootSelectorManager : MonoBehaviour
         foreach (string file in files)
         {
             string json = File.ReadAllText(file);
-            CreateKahootCard(json);
+            CreateKahootCard(json, file);
         }
     }
 
-    private void CreateKahootCard(string json)
+    private void CreateKahootCard(string json, string path)
     {
         KahootData kahoot = JsonUtility.FromJson<KahootData>(json);
 
@@ -62,12 +62,12 @@ public class KahootSelectorManager : MonoBehaviour
 
         KahootCard card = Instantiate(kahootCardPrefab, content);
 
-        card.SetData(kahoot, portada, () => {SelectKahoot(kahoot, json);});
+        card.SetData(kahoot, portada, () => {SelectKahoot(kahoot, json, path);});
     }
 
-    private void SelectKahoot(KahootData kahoot, string json)
+    private void SelectKahoot(KahootData kahoot, string json, string path)
     {
-        AppManager.Instance.SetCurrentKahoot(kahoot, json);
+        AppManager.Instance.SetCurrentKahoot(kahoot, json, path);
 
         switch (AppManager.Instance.CurrentAction)
         {
@@ -78,17 +78,28 @@ public class KahootSelectorManager : MonoBehaviour
                 break;
 
             case AppAction.EDITOR:
-                // Aquí abriremos el editor.
+                Debug.Log("Seleccionado para editar: " + kahoot.titulo);
+                ChangeSceneManager.Instance.GoToKahootEditor();
                 break;
 
             case AppAction.LEADERBOARD:
-                // Aquí abriremos el leaderboard.
+                LeaderboardManager.CreateLeaderboardIfNotExists(AppManager.Instance.CurrentKahootPath);
+                ChangeSceneManager.Instance.GoToLeaderboard();
                 break;
         }
     }
 
     public void GoToMenu()
     {
-        ChangeSceneManager.Instance.GoToMainMenu();
+        switch (AppManager.Instance.CurrentAction)
+        {
+            case AppAction.EDITOR:
+                ChangeSceneManager.Instance.GoToEditorMenu();
+                break;
+
+            default:
+                ChangeSceneManager.Instance.GoToMainMenu();
+                break;
+        }
     }
 }
