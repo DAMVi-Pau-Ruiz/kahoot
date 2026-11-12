@@ -58,11 +58,13 @@ public class KahootValidatorManager : MonoBehaviour
 
     public void GoToKahootSelect()
     {
+        AudioManager.Instance.PlaySFX(SFXType.BUTTON_CLICK);
         ChangeSceneManager.Instance.GoToKahootSelector();
     }
 
     public void GoToKahootPlay()
     {
+        AudioManager.Instance.PlaySFX(SFXType.BUTTON_CLICK);
         ChangeSceneManager.Instance.GoToKahootGame();
     }
 

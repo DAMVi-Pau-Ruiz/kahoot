@@ -330,6 +330,12 @@ MonoBehaviour:
   soundEffects:
   - type: 1
     clip: {fileID: 8300000, guid: 3e84ff0b567062547b4f9904abfa5d6b, type: 3}
+  - type: 0
+    clip: {fileID: 8300000, guid: b1304e6728c2f5443811ec82e86dd856, type: 3}
+  - type: 3
+    clip: {fileID: 8300000, guid: 23ec69a682ab3624e97df27e9da7bd0e, type: 3}
+  - type: 2
+    clip: {fileID: 8300000, guid: 8e6ec4cdfb943314f8db6b8795d8110e, type: 3}
 --- !u!82 &481377317
 AudioSource:
   m_ObjectHideFlags: 0

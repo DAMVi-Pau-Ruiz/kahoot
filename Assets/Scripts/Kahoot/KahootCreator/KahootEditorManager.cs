@@ -65,6 +65,7 @@ public class KahootEditorManager : MonoBehaviour
 
     private void AddQuestion(PreguntaData question)
     {
+        AudioManager.Instance.PlaySFX(SFXType.BUTTON_CLICK);
         QuestionEditorCard newQuestion = Instantiate(questionPrefab, questionsContent);
 
         newQuestion.SetQuestionData(question);
@@ -74,6 +75,7 @@ public class KahootEditorManager : MonoBehaviour
 
     public void DeleteQuestion()
     {
+        AudioManager.Instance.PlaySFX(SFXType.BUTTON_CLICK);
         if (questions.Count <= 1)
         {
             return;
@@ -87,6 +89,7 @@ public class KahootEditorManager : MonoBehaviour
 
     public void SaveKahoot()
     {
+        AudioManager.Instance.PlaySFX(SFXType.BUTTON_CLICK);
         if (string.IsNullOrWhiteSpace(titleInput.text))
         {
             return;
@@ -183,6 +186,7 @@ public class KahootEditorManager : MonoBehaviour
 
     public void DiscardKahoot()
     {
+        AudioManager.Instance.PlaySFX(SFXType.BUTTON_CLICK);
         ChangeSceneManager.Instance.GoToEditorMenu();
     }
 }

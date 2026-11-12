@@ -8,6 +8,7 @@ public class UsernameManager : MonoBehaviour
 
     public void Continue()
     {
+        AudioManager.Instance.PlaySFX(SFXType.BUTTON_CLICK);
         string username = usernameInput.text.Trim();
 
         if (string.IsNullOrEmpty(username))
@@ -23,6 +24,7 @@ public class UsernameManager : MonoBehaviour
 
     public void GoToMenu()
     {
+        AudioManager.Instance.PlaySFX(SFXType.BUTTON_CLICK);
         ChangeSceneManager.Instance.GoToMainMenu();
     }
 }

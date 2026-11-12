@@ -136,6 +136,15 @@ public class KahootPlayManager : MonoBehaviour
 
         bool isCorrect = pregunta.respuestas[index].correcta;
 
+        if (isCorrect)
+        {
+            AudioManager.Instance.PlaySFX(SFXType.CORRECT_ANSWER);
+        }
+        else
+        {
+            AudioManager.Instance.PlaySFX(SFXType.WRONG_ANSWER);
+        }
+
         float duration = currentKahoot.preguntas[currentQuestionIndex].duracion;
 
         scoreManager.RegisterAnswer(isCorrect, remainingTime, duration);
@@ -248,6 +257,7 @@ public class KahootPlayManager : MonoBehaviour
 
     public void ContinueQuestion()
     {
+        AudioManager.Instance.PlaySFX(SFXType.BUTTON_CLICK);
         if (currentState == KahootGameState.RESULT)
         {
             currentQuestionIndex++;
@@ -261,7 +271,7 @@ public class KahootPlayManager : MonoBehaviour
 
                 scoreSaved = true;
             }
-
+            AudioManager.Instance.PlaySFX(SFXType.BUTTON_CLICK);
             ChangeSceneManager.Instance.GoToLeaderboard();
         }
     }

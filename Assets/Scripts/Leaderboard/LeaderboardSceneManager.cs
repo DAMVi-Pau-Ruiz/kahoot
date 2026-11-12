@@ -28,6 +28,7 @@ public class LeaderboardSceneManager : MonoBehaviour
 
     public void GoToMenu()
     {
+        AudioManager.Instance.PlaySFX(SFXType.BUTTON_CLICK);
         ChangeSceneManager.Instance.GoToMainMenu();
     }
 }

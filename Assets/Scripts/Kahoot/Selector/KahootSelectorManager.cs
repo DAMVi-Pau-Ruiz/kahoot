@@ -67,6 +67,7 @@ public class KahootSelectorManager : MonoBehaviour
 
     private void SelectKahoot(KahootData kahoot, string json, string path)
     {
+        AudioManager.Instance.PlaySFX(SFXType.BUTTON_CLICK);
         AppManager.Instance.SetCurrentKahoot(kahoot, json, path);
 
         switch (AppManager.Instance.CurrentAction)
@@ -91,6 +92,7 @@ public class KahootSelectorManager : MonoBehaviour
 
     public void GoToMenu()
     {
+        AudioManager.Instance.PlaySFX(SFXType.BUTTON_CLICK);
         switch (AppManager.Instance.CurrentAction)
         {
             case AppAction.EDITOR:

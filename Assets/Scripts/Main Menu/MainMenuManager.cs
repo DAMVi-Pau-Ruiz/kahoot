@@ -193,6 +193,7 @@ public class MainMenuManager : MonoBehaviour
 
     private void SelectOption(AppAction action)
     {
+        AudioManager.Instance.PlaySFX(SFXType.BUTTON_CLICK);
         AppManager.Instance.SetAction(action);
 
         switch (action)
