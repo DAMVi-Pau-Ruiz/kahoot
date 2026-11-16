@@ -22,7 +22,17 @@ public class KahootSelectorManager : MonoBehaviour
 
         foreach (TextAsset file in files)
         {
-            CreateKahootCard(file.text, "Resources/DefaultKahoots/" + file.name + ".json");
+            string path = "Resources/DefaultKahoots/" + file.name + ".json";
+
+            try
+            {
+                string json = file.text;
+                CreateKahootCard(json, path);
+            }
+            catch (System.Exception e)
+            {
+                ErrorManager.Instance.RegisterError(file.name, "Error accediendo al Kahoot", "No se ha podido leer el archivo predeterminado. " + e.Message);
+            }
         }
     }
 
@@ -31,16 +41,21 @@ public class KahootSelectorManager : MonoBehaviour
         string path = Application.persistentDataPath + "/kahoots";
 
         if (!Directory.Exists(path))
-        {
             return;
-        }
 
         string[] files = Directory.GetFiles(path, "*.json", SearchOption.AllDirectories);
 
         foreach (string file in files)
         {
-            string json = File.ReadAllText(file);
-            CreateKahootCard(json, file);
+            try
+            {
+                string json = File.ReadAllText(file);
+                CreateKahootCard(json, file);
+            }
+            catch (System.Exception e)
+            {
+                ErrorManager.Instance.RegisterError(Path.GetFileNameWithoutExtension(file), "Error accediendo al Kahoot", "No se ha podido leer el archivo. " + e.Message);
+            }
         }
     }
 
@@ -87,6 +102,11 @@ public class KahootSelectorManager : MonoBehaviour
                 LeaderboardManager.CreateLeaderboardIfNotExists(AppManager.Instance.CurrentKahootPath);
                 ChangeSceneManager.Instance.GoToLeaderboard();
                 break;
+
+            case AppAction.ERRORLOG:
+                Debug.Log("Seleccionado para consultar errores: " + kahoot.titulo);
+                ChangeSceneManager.Instance.GoToErrors();
+                break;
         }
     }
 
@@ -97,6 +117,10 @@ public class KahootSelectorManager : MonoBehaviour
         {
             case AppAction.EDITOR:
                 ChangeSceneManager.Instance.GoToEditorMenu();
+                break;
+
+            case AppAction.ERRORLOG:
+                ChangeSceneManager.Instance.GoToErrorsMenu();
                 break;
 
             default:

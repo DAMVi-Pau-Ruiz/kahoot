@@ -1,3 +1,4 @@
+using System.IO;
 using UnityEditor;
 using UnityEngine;
 
@@ -21,7 +22,10 @@ public class KahootValidatorManager : MonoBehaviour
     {
         ShowLoading();
 
-        bool isValid = KahootValidator.TryValidate(json, out string error);
+        string kahootFileName = Path.GetFileNameWithoutExtension(AppManager.Instance.CurrentKahootPath);
+
+
+        bool isValid = KahootValidator.TryValidate(json, kahootFileName, out string error);
 
         if (isValid)
         {

@@ -4,6 +4,7 @@ public enum AppAction
     PLAY,
     LEADERBOARD,
     ERRORS,
+    ERRORLOG,
     ABOUT,
     EDITOR,
     OPTIONS,

@@ -56,4 +56,14 @@ public class ChangeSceneManager : MonoBehaviour
     {
         SceneManager.LoadScene("KahootEditor");
     }
+
+    public void GoToErrors()
+    {
+        SceneManager.LoadScene("InformViewer");
+    }
+
+    public void GoToErrorsMenu()
+    {
+        SceneManager.LoadScene("ErrorsMenu");
+    }
 }
