@@ -13,10 +13,12 @@ public class AnswerButton : MonoBehaviour
     private Action<int> onClickCallback;
 
     private Color originalColor;
+    private Color originalTextColor;
 
     private void Awake()
     {
         originalColor = buttonImage.color;
+        originalTextColor = answerText.color;
         button.onClick.AddListener(OnClick);
     }
 
@@ -39,6 +41,26 @@ public class AnswerButton : MonoBehaviour
 
     public void SetDrakened(bool value)
     {
-        buttonImage.color = value ? originalColor * 0.2f : originalColor;
+        if (value)
+        {
+            buttonImage.color = new Color(
+                originalColor.r * 0.44f,
+                originalColor.g * 0.44f,
+                originalColor.b * 0.44f,
+                originalColor.a
+            );
+
+            answerText.color = new Color(
+                originalTextColor.r * 0.44f,
+                originalTextColor.g * 0.44f,
+                originalTextColor.b * 0.44f,
+                originalTextColor.a
+            );
+        }
+        else
+        {
+            buttonImage.color = originalColor;
+            answerText.color = originalTextColor;
+        }
     }
 }

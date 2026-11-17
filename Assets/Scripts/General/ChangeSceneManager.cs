@@ -66,4 +66,9 @@ public class ChangeSceneManager : MonoBehaviour
     {
         SceneManager.LoadScene("ErrorsMenu");
     }
+
+    public void GoToAbout()
+    {
+        SceneManager.LoadScene("About");
+    }
 }
