@@ -39,6 +39,8 @@ public class KahootPlayManager : MonoBehaviour
     [Header("Question Info")]
     [SerializeField] private TMP_Text currentQuestionText;
 
+    private Coroutine halfTimeAudioCoroutine;
+
     private KahootData currentKahoot;
     private KahootGameState currentState;
 
@@ -187,19 +189,34 @@ public class KahootPlayManager : MonoBehaviour
     {
         remainingTime = duration;
 
+        bool halfTimePlayed = false;
+
         while (remainingTime > 0 && currentState == KahootGameState.QUESTION)
         {
             questionTimerText.text = Mathf.CeilToInt(remainingTime).ToString();
+
+            // Reproducir sonido al llegar a la mitad del tiempo
+            if (!halfTimePlayed && remainingTime <= duration / 2f)
+            {
+                AudioManager.Instance.PlaySFX(SFXType.TIMER_HALF);
+
+                halfTimeAudioCoroutine = StartCoroutine(StopHalfTimeAudio(3));
+
+                halfTimePlayed = true;
+            }
 
             yield return new WaitForSeconds(1);
 
             remainingTime--;
         }
 
-        questionTimerText.text = "0";
-
         if (currentState == KahootGameState.QUESTION)
         {
+            // Sonido de tiempo agotado
+            AudioManager.Instance.PlaySFX(SFXType.TIMER_END);
+
+            StartCoroutine(StopHalfTimeAudio(2));
+
             scoreManager.RegisterAnswer(false, 0, duration);
             FinishQuestion();
         }
@@ -274,5 +291,12 @@ public class KahootPlayManager : MonoBehaviour
             AudioManager.Instance.PlaySFX(SFXType.BUTTON_CLICK);
             ChangeSceneManager.Instance.GoToLeaderboard();
         }
+    }
+
+    private IEnumerator StopHalfTimeAudio(float time)
+    {
+        yield return new WaitForSeconds(time);
+
+        AudioManager.Instance.StopSFX();
     }
 }

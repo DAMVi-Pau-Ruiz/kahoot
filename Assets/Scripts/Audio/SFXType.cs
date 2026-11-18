@@ -6,5 +6,6 @@ public enum SFXType
     CORRECT_ANSWER,
     WRONG_ANSWER,
     COUNTDOWN,
-    TIMER_END
+    TIMER_END,
+    TIMER_HALF
 }

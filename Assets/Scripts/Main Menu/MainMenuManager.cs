@@ -218,6 +218,10 @@ public class MainMenuManager : MonoBehaviour
                 ChangeSceneManager.Instance.GoToAbout();
                 break;
 
+            case AppAction.OPTIONS:
+                ChangeSceneManager.Instance.GoToOptions();
+                break;
+
             case AppAction.EXIT:
                 //exits the app
                 break;
