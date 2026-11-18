@@ -122,4 +122,8 @@ public class AudioManager : MonoBehaviour
         audioMixer.SetFloat("SFXVolume", Mathf.Log10(volume) * 20f);
     }
 
+    public void StopSFX()
+    {
+        sfxSource.Stop();
+    }
 }

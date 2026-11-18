@@ -1,15 +1,12 @@
+
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.Audio;
 using TMPro;
-using System;
-using System.IO;
 using System.Collections.Generic;
 
 public class OptionsManager : MonoBehaviour
 {
     [Header("Audio")]
-    [SerializeField] private AudioMixer audioMixer;
     [SerializeField] private Slider musicSlider;
     [SerializeField] private Slider sfxSlider;
     [SerializeField] private TMP_Text musicPercentageText;
@@ -29,31 +26,25 @@ public class OptionsManager : MonoBehaviour
     [SerializeField] private Image audioButtonImage;
     [SerializeField] private Image screenButtonImage;
 
-    private SettingsData settings;
-
-    private Resolution[] availableResolutions;
     private List<Resolution> resolutions = new List<Resolution>();
-
-    private string settingsPath;
 
     private void Start()
     {
-        settingsPath = Path.Combine(Application.persistentDataPath, "settings.json");
-
-        LoadSettings();
         LoadResolutions();
 
-        musicSlider.value = settings.musicVolume;
-        sfxSlider.value = settings.effectsVolume;
+        // Cargar valores del singleton
+        musicSlider.SetValueWithoutNotify(
+            SettingsManager.Instance.MusicVolume);
 
-        musicPercentageText.text = Mathf.RoundToInt(settings.musicVolume * 100) + "%";
-        sfxPercentageText.text = Mathf.RoundToInt(settings.effectsVolume * 100) + "%";
+        sfxSlider.SetValueWithoutNotify(
+            SettingsManager.Instance.SFXVolume);
 
-        fullscreenToggle.isOn = settings.fullscreen;
+        fullscreenToggle.SetIsOnWithoutNotify(
+            SettingsManager.Instance.Fullscreen);
 
-        ApplyAudioSettings();
-        ApplyScreenSettings();
+        UpdateAudioPercentages();
 
+        // Listeners
         musicSlider.onValueChanged.AddListener(ChangeMusicVolume);
         sfxSlider.onValueChanged.AddListener(ChangeSFXVolume);
 
@@ -68,34 +59,28 @@ public class OptionsManager : MonoBehaviour
 
     private void ChangeMusicVolume(float value)
     {
-        settings.musicVolume = value;
-
+        SettingsManager.Instance.SetMusicVolume(value);
         musicPercentageText.text = Mathf.RoundToInt(value * 100) + "%";
-
-        ApplyAudioSettings();
     }
 
     private void ChangeSFXVolume(float value)
     {
-        settings.effectsVolume = value;
-
+        SettingsManager.Instance.SetSFXVolume(value);
         sfxPercentageText.text = Mathf.RoundToInt(value * 100) + "%";
-
-        ApplyAudioSettings();
     }
 
-    private void ApplyAudioSettings()
+    private void UpdateAudioPercentages()
     {
-        float musicDB = Mathf.Log10(Mathf.Max(settings.musicVolume, 0.0001f)) * 20f;
-        float sfxDB = Mathf.Log10(Mathf.Max(settings.effectsVolume, 0.0001f)) * 20f;
+        musicPercentageText.text =
+            Mathf.RoundToInt(SettingsManager.Instance.MusicVolume * 100) + "%";
 
-        audioMixer.SetFloat("MusicVolume", musicDB);
-        audioMixer.SetFloat("EffectsVolume", sfxDB);
+        sfxPercentageText.text =
+            Mathf.RoundToInt(SettingsManager.Instance.SFXVolume * 100) + "%";
     }
 
     private void LoadResolutions()
     {
-        availableResolutions = Screen.resolutions;
+        Resolution[] availableResolutions = Screen.resolutions;
 
         resolutions.Clear();
         resolutionDropdown.ClearOptions();
@@ -129,16 +114,13 @@ public class OptionsManager : MonoBehaviour
 
         for (int i = 0; i < resolutions.Count; i++)
         {
-            if (resolutions[i].width == settings.resolutionWidth &&
-                resolutions[i].height == settings.resolutionHeight)
+            if (resolutions[i].width == SettingsManager.Instance.ResolutionWidth &&
+                resolutions[i].height == SettingsManager.Instance.ResolutionHeight)
             {
                 selectedIndex = i;
                 break;
             }
         }
-
-        settings.resolutionWidth = resolutions[selectedIndex].width;
-        settings.resolutionHeight = resolutions[selectedIndex].height;
 
         resolutionDropdown.SetValueWithoutNotify(selectedIndex);
         resolutionDropdown.RefreshShownValue();
@@ -148,25 +130,14 @@ public class OptionsManager : MonoBehaviour
     {
         Resolution resolution = resolutions[index];
 
-        settings.resolutionWidth = resolution.width;
-        settings.resolutionHeight = resolution.height;
-
-        ApplyScreenSettings();
+        SettingsManager.Instance.SetResolution(
+            resolution.width,
+            resolution.height);
     }
 
     private void ChangeFullscreen(bool value)
     {
-        settings.fullscreen = value;
-        ApplyScreenSettings();
-    }
-
-    private void ApplyScreenSettings()
-    {
-        Screen.SetResolution(
-            settings.resolutionWidth,
-            settings.resolutionHeight,
-            settings.fullscreen
-        );
+        SettingsManager.Instance.SetFullscreen(value);
     }
 
     public void ShowAudioPanel()
@@ -195,45 +166,9 @@ public class OptionsManager : MonoBehaviour
         buttonImage.color = color;
     }
 
-    private void LoadSettings()
-    {
-        if (File.Exists(settingsPath))
-        {
-            try
-            {
-                string json = File.ReadAllText(settingsPath);
-                settings = JsonUtility.FromJson<SettingsData>(json);
-            }
-            catch (Exception e)
-            {
-                Debug.LogError("Error cargando los ajustes: " + e.Message);
-            }
-        }
-
-        if (settings == null)
-        {
-            settings = new SettingsData();
-        }
-    }
-
-    private void SaveSettings()
-    {
-        try
-        {
-            string json = JsonUtility.ToJson(settings, true);
-            File.WriteAllText(settingsPath, json);
-
-            Debug.Log("Configuracion guardada correctamente.");
-        }
-        catch (Exception e)
-        {
-            Debug.LogError("Error guardando los ajustes: " + e.Message);
-        }
-    }
-
     public void GoBack()
     {
-        SaveSettings();
+        AudioManager.Instance.PlaySFX(SFXType.BUTTON_CLICK);
         ChangeSceneManager.Instance.GoToMainMenu();
     }
 }

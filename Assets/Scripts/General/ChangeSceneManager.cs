@@ -71,4 +71,9 @@ public class ChangeSceneManager : MonoBehaviour
     {
         SceneManager.LoadScene("About");
     }
+
+    public void GoToOptions()
+    {
+        SceneManager.LoadScene("Options");
+    }
 }
