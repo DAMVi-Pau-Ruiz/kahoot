@@ -1,8 +1,8 @@
+
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Collections.Generic;
-using NUnit.Framework.Constraints;
 
 public class QuestionEditorCard : MonoBehaviour
 {
@@ -28,10 +28,88 @@ public class QuestionEditorCard : MonoBehaviour
     [SerializeField] private TMP_InputField[] answers4Input;
     [SerializeField] private Toggle[] answers4Correct;
 
-    private void Start()
+    private Dictionary<Graphic, Color> normalColors = new Dictionary<Graphic, Color>();
+
+    private bool validationAttempted = false;
+
+    private void Awake()
     {
+        CacheNormalColor(questionInput.targetGraphic);
+        CacheNormalColor(durationInput.targetGraphic);
+
+        AddInputListeners(questionInput);
+        AddInputListeners(durationInput);
+
+        CacheAnswerFields(answers2Input, answers2Correct);
+        CacheAnswerFields(answers3Input, answers3Correct);
+        CacheAnswerFields(answers4Input, answers4Correct);
+
         answersDropdown.onValueChanged.AddListener(UpdateAnswerPanels);
+
         UpdateAnswerPanels(answersDropdown.value);
+    }
+
+    private void CacheNormalColor(Graphic graphic)
+    {
+        if (graphic != null && !normalColors.ContainsKey(graphic))
+        {
+            normalColors.Add(graphic, graphic.color);
+        }
+    }
+
+    private void CacheAnswerFields(TMP_InputField[] inputs, Toggle[] toggles)
+    {
+        foreach (TMP_InputField input in inputs)
+        {
+            CacheNormalColor(input.targetGraphic);
+            AddInputListeners(input);
+        }
+
+        foreach (Toggle toggle in toggles)
+        {
+            CacheNormalColor(toggle.targetGraphic);
+            toggle.onValueChanged.AddListener(OnToggleChanged);
+        }
+    }
+
+    private void AddInputListeners(TMP_InputField input)
+    {
+        input.onValueChanged.AddListener(OnInputChanged);
+    }
+
+    private void OnInputChanged(string value)
+    {
+        if (validationAttempted)
+        {
+            UpdateValidationVisuals();
+        }
+    }
+
+    private void OnToggleChanged(bool value)
+    {
+        if (validationAttempted)
+        {
+            UpdateValidationVisuals();
+        }
+    }
+
+    private void SetGraphicError(Graphic graphic, bool hasError)
+    {
+        if (graphic == null || !normalColors.ContainsKey(graphic))
+        {
+            return;
+        }
+
+        Color normalColor = normalColors[graphic];
+
+        Color errorColor = new Color(
+            1f,
+            0.65f,
+            0.65f,
+            normalColor.a
+        );
+
+        graphic.color = hasError ? errorColor : normalColor;
     }
 
     private void UpdateAnswerPanels(int value)
@@ -39,22 +117,70 @@ public class QuestionEditorCard : MonoBehaviour
         answers2Panel.SetActive(value == 0);
         answers3Panel.SetActive(value == 1);
         answers4Panel.SetActive(value == 2);
+
+        if (validationAttempted)
+        {
+            UpdateValidationVisuals();
+        }
     }
 
-    public PreguntaData GetQuestionData()
+    private void UpdateValidationVisuals()
     {
-        PreguntaData question = new PreguntaData();
+        SetGraphicError(
+            questionInput.targetGraphic,
+            string.IsNullOrWhiteSpace(questionInput.text)
+        );
 
-        question.pregunta = questionInput.text;
-        question.duracion = int.Parse(durationInput.text);
-        question.imagen = "";
+        bool validDuration =
+            int.TryParse(durationInput.text, out int duration) &&
+            duration > 0;
 
+        SetGraphicError(
+            durationInput.targetGraphic,
+            !validDuration
+        );
+
+        GetSelectedAnswers(
+            out TMP_InputField[] inputs,
+            out Toggle[] toggles
+        );
+
+        bool hasCorrect = false;
+        bool hasIncorrect = false;
+
+        for (int i = 0; i < inputs.Length; i++)
+        {
+            SetGraphicError(
+                inputs[i].targetGraphic,
+                string.IsNullOrWhiteSpace(inputs[i].text)
+            );
+
+            if (toggles[i].isOn)
+            {
+                hasCorrect = true;
+            }
+            else
+            {
+                hasIncorrect = true;
+            }
+        }
+
+        bool invalidAnswers = !hasCorrect || !hasIncorrect;
+
+        for (int i = 0; i < toggles.Length; i++)
+        {
+            SetGraphicError(
+                toggles[i].targetGraphic,
+                invalidAnswers
+            );
+        }
+    }
+
+    private void GetSelectedAnswers(
+        out TMP_InputField[] inputs,
+        out Toggle[] toggles)
+    {
         int answerCount = answersDropdown.value + 2;
-
-        question.respuestas = new List<RespuestaData>();
-
-        TMP_InputField[] inputs;
-        Toggle[] toggles;
 
         switch (answerCount)
         {
@@ -73,8 +199,24 @@ public class QuestionEditorCard : MonoBehaviour
                 toggles = answers4Correct;
                 break;
         }
+    }
 
-        for (int i = 0; i < answerCount; i++)
+    public PreguntaData GetQuestionData()
+    {
+        PreguntaData question = new PreguntaData();
+
+        question.pregunta = questionInput.text;
+        question.duracion = int.Parse(durationInput.text);
+        question.imagen = "";
+
+        GetSelectedAnswers(
+            out TMP_InputField[] inputs,
+            out Toggle[] toggles
+        );
+
+        question.respuestas = new List<RespuestaData>();
+
+        for (int i = 0; i < inputs.Length; i++)
         {
             RespuestaData answer = new RespuestaData();
 
@@ -97,26 +239,10 @@ public class QuestionEditorCard : MonoBehaviour
         answersDropdown.value = answerCount - 2;
         UpdateAnswerPanels(answersDropdown.value);
 
-        TMP_InputField[] inputs;
-        Toggle[] toggles;
-
-        switch (answerCount)
-        {
-            case 2:
-                inputs = answers2Input;
-                toggles = answers2Correct;
-                break;
-
-            case 3:
-                inputs = answers3Input;
-                toggles = answers3Correct;
-                break;
-
-            default:
-                inputs = answers4Input;
-                toggles = answers4Correct;
-                break;
-        }
+        GetSelectedAnswers(
+            out TMP_InputField[] inputs,
+            out Toggle[] toggles
+        );
 
         for (int i = 0; i < answerCount; i++)
         {
@@ -125,55 +251,45 @@ public class QuestionEditorCard : MonoBehaviour
         }
     }
 
-    public bool TryGetQuestionData(out PreguntaData question, out string error)
+    public bool TryGetQuestionData(
+        out PreguntaData question,
+        out string error)
     {
+        validationAttempted = true;
+
         question = null;
         error = "";
 
+        UpdateValidationVisuals();
+
+        bool valid = true;
+
         if (string.IsNullOrWhiteSpace(questionInput.text))
         {
-            error = "Hay una pregunta sin enunciado";
-            return false;
+            error += "Hay una pregunta sin enunciado. ";
+            valid = false;
         }
 
         if (!int.TryParse(durationInput.text, out int duration) || duration <= 0)
         {
-            error = "La duracion debe ser un número mayor que cero";
-            return false;
+            error += "La duración debe ser un número mayor que cero. ";
+            valid = false;
         }
 
-        int answerCount = answersDropdown.value + 2;
-
-        TMP_InputField[] inputs;
-        Toggle[] toggles;
-
-        switch (answerCount)
-        {
-            case 2:
-                inputs = answers2Input;
-                toggles = answers2Correct;
-                break;
-
-            case 3:
-                inputs = answers3Input;
-                toggles = answers3Correct;
-                break;
-
-            default:
-                inputs = answers4Input;
-                toggles = answers4Correct;
-                break;
-        }
+        GetSelectedAnswers(
+            out TMP_InputField[] inputs,
+            out Toggle[] toggles
+        );
 
         bool hasCorrect = false;
         bool hasIncorrect = false;
 
-        for (int i = 0;  i < inputs.Length; i++)
+        for (int i = 0; i < inputs.Length; i++)
         {
             if (string.IsNullOrWhiteSpace(inputs[i].text))
             {
-                error = "Hay una respuesta vacía en una pregunta.";
-                return false;
+                error += "Hay una respuesta vacía. ";
+                valid = false;
             }
 
             if (toggles[i].isOn)
@@ -188,12 +304,17 @@ public class QuestionEditorCard : MonoBehaviour
 
         if (!hasCorrect || !hasIncorrect)
         {
-            error = "Cada pregunta necesita respuestas correctas e incorrectas";
+            error += "Cada pregunta necesita respuestas correctas e incorrectas. ";
+            valid = false;
+        }
+
+        if (!valid)
+        {
             return false;
         }
 
         question = GetQuestionData();
+
         return true;
     }
-
 }

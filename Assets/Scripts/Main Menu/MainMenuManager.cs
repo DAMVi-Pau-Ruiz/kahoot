@@ -223,7 +223,7 @@ public class MainMenuManager : MonoBehaviour
                 break;
 
             case AppAction.EXIT:
-                //exits the app
+                Application.Quit();
                 break;
         }
     }

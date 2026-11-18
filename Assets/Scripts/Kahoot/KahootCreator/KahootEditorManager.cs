@@ -1,4 +1,6 @@
+
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 using System.Collections.Generic;
 using System;
@@ -19,6 +21,20 @@ public class KahootEditorManager : MonoBehaviour
 
     private List<QuestionEditorCard> questions = new List<QuestionEditorCard>();
 
+    private Color titleNormalColor;
+    private Color descriptionNormalColor;
+
+    private bool validationAttempted = false;
+
+    private void Awake()
+    {
+        titleNormalColor = titleInput.targetGraphic.color;
+        descriptionNormalColor = descriptionInput.targetGraphic.color;
+
+        titleInput.onValueChanged.AddListener(OnGeneralFieldChanged);
+        descriptionInput.onValueChanged.AddListener(OnGeneralFieldChanged);
+    }
+
     private void Start()
     {
         switch (AppManager.Instance.EditorMode)
@@ -37,7 +53,7 @@ public class KahootEditorManager : MonoBehaviour
     {
         titleInput.text = "";
         descriptionInput.text = "";
-        
+
         AddQuestion();
     }
 
@@ -59,13 +75,14 @@ public class KahootEditorManager : MonoBehaviour
     public void AddQuestion()
     {
         QuestionEditorCard newQuestion = Instantiate(questionPrefab, questionsContent);
-        
+
         questions.Add(newQuestion);
     }
 
     private void AddQuestion(PreguntaData question)
     {
         AudioManager.Instance.PlaySFX(SFXType.BUTTON_CLICK);
+
         QuestionEditorCard newQuestion = Instantiate(questionPrefab, questionsContent);
 
         newQuestion.SetQuestionData(question);
@@ -76,6 +93,7 @@ public class KahootEditorManager : MonoBehaviour
     public void DeleteQuestion()
     {
         AudioManager.Instance.PlaySFX(SFXType.BUTTON_CLICK);
+
         if (questions.Count <= 1)
         {
             return;
@@ -87,17 +105,56 @@ public class KahootEditorManager : MonoBehaviour
         questions.RemoveAt(lastIndex);
     }
 
-    public void SaveKahoot()
+    private void OnGeneralFieldChanged(string value)
     {
-        AudioManager.Instance.PlaySFX(SFXType.BUTTON_CLICK);
-        if (string.IsNullOrWhiteSpace(titleInput.text))
+        if (!validationAttempted)
         {
             return;
         }
 
+        UpdateGeneralValidation();
+    }
+
+    private void UpdateGeneralValidation()
+    {
+        SetFieldError(
+            titleInput,
+            string.IsNullOrWhiteSpace(titleInput.text),
+            titleNormalColor
+        );
+
+        SetFieldError(
+            descriptionInput,
+            string.IsNullOrWhiteSpace(descriptionInput.text),
+            descriptionNormalColor
+        );
+    }
+
+    private void SetFieldError(TMP_InputField input, bool hasError, Color normalColor)
+    {
+        Color errorColor = new Color(1f, 0.65f, 0.65f, normalColor.a);
+
+        input.targetGraphic.color = hasError ? errorColor : normalColor;
+    }
+
+    public void SaveKahoot()
+    {
+        AudioManager.Instance.PlaySFX(SFXType.BUTTON_CLICK);
+
+        validationAttempted = true;
+
+        UpdateGeneralValidation();
+
+        bool allValid = true;
+
+        if (string.IsNullOrWhiteSpace(titleInput.text))
+        {
+            allValid = false;
+        }
+
         if (string.IsNullOrWhiteSpace(descriptionInput.text))
         {
-            return;
+            allValid = false;
         }
 
         KahootData kahoot = new KahootData();
@@ -112,10 +169,17 @@ public class KahootEditorManager : MonoBehaviour
             if (!card.TryGetQuestionData(out PreguntaData question, out string error))
             {
                 Debug.LogWarning(error);
-                return;
+                allValid = false;
             }
+            else
+            {
+                kahoot.preguntas.Add(question);
+            }
+        }
 
-            kahoot.preguntas.Add(question);
+        if (!allValid)
+        {
+            return;
         }
 
         string json = JsonUtility.ToJson(kahoot, true);
@@ -125,25 +189,6 @@ public class KahootEditorManager : MonoBehaviour
         switch (AppManager.Instance.EditorMode)
         {
             case KahootEditorMode.CREATE:
-            {
-                string folder = Application.persistentDataPath + "/kahoots";
-
-                if (!Directory.Exists(folder))
-                {
-                    Directory.CreateDirectory(folder);
-                }
-
-                string fileName = GetUniqueFileName(folder, kahoot.titulo);
-
-                path = Path.Combine(folder, fileName + ".json");
-                break;
-            }
-
-            case KahootEditorMode.EDIT:
-            {
-                path = AppManager.Instance.CurrentKahootPath;
-
-                if (path.StartsWith("Resources/"))
                 {
                     string folder = Application.persistentDataPath + "/kahoots";
 
@@ -152,10 +197,29 @@ public class KahootEditorManager : MonoBehaviour
                         Directory.CreateDirectory(folder);
                     }
 
-                    path = Path.Combine(folder, kahoot.titulo + ".json");
+                    string fileName = GetUniqueFileName(folder, kahoot.titulo);
+
+                    path = Path.Combine(folder, fileName + ".json");
+                    break;
                 }
-                break;
-            }
+
+            case KahootEditorMode.EDIT:
+                {
+                    path = AppManager.Instance.CurrentKahootPath;
+
+                    if (path.StartsWith("Resources/"))
+                    {
+                        string folder = Application.persistentDataPath + "/kahoots";
+
+                        if (!Directory.Exists(folder))
+                        {
+                            Directory.CreateDirectory(folder);
+                        }
+
+                        path = Path.Combine(folder, kahoot.titulo + ".json");
+                    }
+                    break;
+                }
 
             default:
                 return;
@@ -187,6 +251,7 @@ public class KahootEditorManager : MonoBehaviour
     public void DiscardKahoot()
     {
         AudioManager.Instance.PlaySFX(SFXType.BUTTON_CLICK);
+
         ChangeSceneManager.Instance.GoToEditorMenu();
     }
 }
